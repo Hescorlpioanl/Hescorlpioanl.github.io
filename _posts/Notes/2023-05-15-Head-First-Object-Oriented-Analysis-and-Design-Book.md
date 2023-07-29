@@ -327,3 +327,96 @@ A design pattern is just a way to design the solution for a particular type of
 Our chapter is done now, I would like to document this moment right now. I was writing these chapter notes while I'm in the local cafeteria beside the Nile River and I asked for a coffee it was so bad but it cost 10 LE so it's fair 😁. See you in the next chapters. 
 
 --- 
+
+# Chapter 7: Architecture 
+
+`Architecture` is the organizational structure of a system, including its decomposition into parts, its connectivity, interaction mechanisms, and the guiding principles and decisions that you use in the design of a system.
+
+Architecture takes a big chaotic mess...and helps us turn it into a well-ordered application. if you didn't find where to start we can start with the features list and pick one feature but which one to start with? The things in your application that are really important are architecturally significant, and you should focus on them `FIRST`
+
+To determine which feature is the most important, Ask yourself the following 3 questions:
+1. Is it part of the essence of the system?
+if you can't imagine your system without this feature then it's a core part of your system.
+
+2. What does it mean?
+if you don't really know what the description means, then it's probably pretty important to give some attention to this feature, anytime you think this part will take a lot of time or will create problems, start with it now rather than late.
+
+3. How do I do it?
+features that seem to be really hard to implement, or a totally new programming task for you, you better spend some time searching how it will be implemented, to not create lots of problems down the road.
+
+The essence of a system is what that system is at its most basic level. Once you determine what are the most important parts to start with, you can start with any one of them. The point here is to reduce the risk so that we start with key features first.
+
+Focus on one feature at a time to reduce risk in your project. Don’t get distracted by features that won’t help reduce risk.
+
+Build on what you’ve already got done whenever possible. After finishing one feature picks the next one which depends on what you just finished before, this is good for your progress.
+
+the more your design is good, the more risk will be reduced.
+
+Sometimes the best way to write great code is to hold off on writing code as long as you can. thinking and reevaluating your design is most important and helps you to write great code.
+
+Customers don’t pay you for great code, they pay you for great software 😃. 
+
+---
+
+# Chapter 8: Design Principles
+
+Will be available soon. . .
+
+---
+
+# Chapter 9: Iterating and Testing
+
+In this chapter, the authors introduce a bunch of different development approaches to design and implement our projects. Talking about testing our code, and making sure it works well as supposed.
+
+Keep in mind that You write great software iteratively. We start with a general big picture and then go deeper into the solution until we complete it. as we go deeper into the solution our design decisions may be changed as we go deeper. Note that the design decisions are always tradeoffs 😃.
+
+There are many approaches to developing an application, in this chapter we will spotlight two of them `Feature-driven development` and `Use case-driven development`.
+
+| Feature driven development `FDD` | Use case driven development `UCCD`|
+| :--: | :--: |
+| focus on specific features of the application. This approach is all about taking one piece of functionality that the customer wants, and working on that functionality until it’s complete. | focus on specific flows through the application. This approach takes a complete path through the application, with a clear start and end, and implements that path in your code. |
+| Use Features list | Use Use Cases list |
+
+In feature-driven development, we focus on one feature at a time, we can start with the feature that many features depend on it to 
+
+In the Use of case-driven development, we focus on one scenario at a time, starting with its start point, and going through its different paths till the end point.
+
+Both of them are suitable for developing applications. So when to use `FDD` and `UCCD` -this is not a formal abbreviation I write them for short-?
+
+| * | Feature driven development | Use case driven development |
+|:--:| :--:| :--:|
+| Show the customer working code faster | ✔ | ❌ |
+| User-centric | ❌ | ✔ |
+| System has disconnected pieces of functionality. | ✔ | ❌ |
+| Transactional systems | ❌ | ✔ |
+| Show the customer bigger pieces of functionality at each stage | ❌ | ✔ |
+
+You should test your software for every possible usage you can think of. Be creative!
+Don’t forget to test for `incorrect` usage of the software, too. You’ll catch errors early, and make your customers very happy.
+
+Test cases make your customers happy because they got the job done, no matter how your code is clean as we mentioned before customers pay for great software. Test-driven development focuses on getting the behavior of your classes right.
+
+Each time you iterate, reevaluate your design decisions and don’t be afraid to `CHANGE` something if it makes sense for your design. change always happens, so be sure you have the willing to change your design if needed.
+
+| Programming by contract | Defensive programming |
+| :-: | :--: |
+| You and your software’s users are agreeing that your software will behave in a certain way. we assume that people using our code can handle `null` return values for example. we trust other coders and developers for being able to deal with such situations. | If we don't trust other developers and want to keep all safe, we throw an exception instead of a null value for accessing/getting not-existing values in a map or array. In this approach, our code will stop working when it hit any exception to 0make 0i0t safe for all users and developers. |
+
+When you are programming by contract, you’re working with client code to agree on how you’ll handle problem situations.
+
+When you’re programming defensively, you’re making sure the client gets a “safe” response, no matter what the client wants to have happen.
+
+---
+
+# Chapter 10: The OOA&D Lifecycle
+
+Not Read Yet.
+---
+
+# Changelogs
+
+| Update | Date | Description |
+|:--| :--: | :--:|
+| Finish This Book | 31-07-2023 | I finished reading this book for the first time and took notes on its chapters |
+|  |  |  |
+
