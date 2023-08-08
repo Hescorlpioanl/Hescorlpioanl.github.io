@@ -360,7 +360,76 @@ Customers don’t pay you for great code, they pay you for great software 😃.
 
 # Chapter 8: Design Principles
 
-Will be available soon. . .
+In this chapter, the authors introduce a bunch of OO design principles, using proven OO Design principles results in more maintainable, flexible, and extensible software.
+
+## Open-Closed principle (OCP)
+in this principle your code must be closed for modification and open for extension.
+
+![image](https://github.com/0xGhazy/0xGhazy/assets/60070427/20ab9521-61e7-4464-9a43-000b168bb354)
+
+InstrumentSpec is closed for modification; the `matches()` method is defined in the base class and doesn’t change.
+
+But it’s open for extension, because all of the subclasses can change the behavior of `matches()`
+
+You can achieve this concept not only by extending another class, but if you have several private methods in a class, but those are also closed for modification—no other code can mess with them. But then you could add several public methods that invoked those private methods in different ways. this is considered an OCP.
+
+OCP is a combination of encapsulation and abstraction.
+
+## Don't Repeat Yourself principle (DRY)
+Avoid duplicate code by abstracting out things that are common and placing those things in a single location.
+
+We see the DRY principle at dog door implementation when putting the ability to close the door automatically inside the door class itself.
+
+![image-1](https://github.com/0xGhazy/0xGhazy/assets/60070427/5739394e-ba74-45d8-ba43-a2edbb3cec21)
+
+DRY is really about `ONE requirement` in `ONE place`. A requirement should be implemented one time, use cases shouldn’t have `overlap`, and your code shouldn’t repeat itself. DRY is about a lot more than just code.
+
+## The Single Responsibility Principle (SRP)
+
+Every object in your system should have a single responsibility, and all the object’s services should be focused on carrying out that single responsibility.
+
+Cohesion is actually just another name for the SRP. If you’re writing highly cohesive software, then that means that you’re correctly applying the SRP.
+
+| DRY | SRP |
+|:--:|:--:|
+| Put functions and data in one place | Make sure that your class does one thing and do it well|
+
+the following image is a test to determine if your class applies or violates the SRP principle.
+![image-2](https://github.com/0xGhazy/0xGhazy/assets/60070427/c3615624-c0f7-4921-bd88-f6306dacc5e7)
+
+## The Liskov Substitution Principle (LSP)
+Subtypes must be substitutable for their base types.
+
+The LSP is all about well-designed inheritance. When you inherit from a base class, you must be able to substitute your subclass for that base class without things going terribly wrong. Otherwise, you’ve used inheritance incorrectly!
+
+Violating the LSP makes for confusing code, It’s hard to understand code that misuses inheritance. 
+
+Here are some inheritance alternatives.
+
+
+## Delegate
+Is when you hand over the responsibility for a particular task to another class or method.
+
+Use delegation when you want to use another class’s functionality, as is, without changing that behavior at all.
+
+## Composition
+Composition allows you to use behavior from a family of other classes, and to change that behavior at runtime.
+
+![image-3](https://github.com/0xGhazy/0xGhazy/assets/60070427/0f47c937-6c50-47aa-827b-0d6062343e1d)
+
+
+In composition, the object composed of other behaviors owns those behaviors. When the object is destroyed, so are all of its behaviors.
+
+The behaviors in composition do not exist outside of the composition itself.
+
+## Aggregation
+Aggregation is when one class is used as part of another class, but still exists outside of that other class.
+
+![image-4](https://github.com/0xGhazy/0xGhazy/assets/60070427/344984fe-edf2-42d1-b708-ccba15dbe6f2)
+
+If you favor delegation, composition, and aggregation over inheritance, your software will usually be more flexible, and easier to maintain, extend, and reuse.
+
+The last thing in this chapter The LSP is not about subclassing, though; it’s about when to subclass.
 
 ---
 
@@ -407,16 +476,3 @@ When you are programming by contract, you’re working with client code to agree
 When you’re programming defensively, you’re making sure the client gets a “safe” response, no matter what the client wants to have happen.
 
 ---
-
-# Chapter 10: The OOA&D Lifecycle
-
-Not Read Yet.
----
-
-# Changelogs
-
-| Update | Date | Description |
-|:--| :--: | :--:|
-| Finish This Book | 31-07-2023 | I finished reading this book for the first time and took notes on its chapters |
-|  |  |  |
-
