@@ -7,6 +7,9 @@ ribbon: ForestGreen
 description: "Implementing CRUD API using python flask and SQLite3."
 categories:
   - Graduation Project Diary
+tags:
+  - Python Flask
+  - REST API
 toc: false
 ---
 

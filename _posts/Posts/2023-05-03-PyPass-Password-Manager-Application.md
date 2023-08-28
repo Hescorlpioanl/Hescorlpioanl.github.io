@@ -7,6 +7,9 @@ ribbon: ForestGreen
 description: "Review the features of PyPass password manager. . ."
 categories:
   - Posts
+tags:
+  - Python
+  - Project
 toc: false
 ---
 

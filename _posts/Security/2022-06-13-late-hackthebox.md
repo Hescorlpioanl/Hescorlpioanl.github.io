@@ -7,6 +7,8 @@ ribbon: ForestGreen
 description: "My Writeup for Late box from HackTheBox"
 categories:
   - Security
+tags:
+  - HackTheBox
 toc: false
 ---
 

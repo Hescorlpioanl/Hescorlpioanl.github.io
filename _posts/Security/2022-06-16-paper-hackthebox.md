@@ -7,6 +7,8 @@ ribbon: ForestGreen
 description: "My Writeup for Paper box from HackTheBox"
 categories:
   - Security
+tags:
+  - HackTheBox
 toc: false
 ---
 

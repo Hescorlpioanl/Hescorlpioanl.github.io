@@ -7,6 +7,8 @@ ribbon: ForestGreen
 description: "My Writeup for DEATHNOTE Box from VulnHub"
 categories:
   - Security
+tags:
+  - VlunHub
 toc: false
 ---
 

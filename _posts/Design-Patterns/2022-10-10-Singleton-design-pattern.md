@@ -7,6 +7,9 @@ ribbon: ForestGreen
 description: "Singleton Design Pattern in a nutshell...."
 categories:
   - Design Patterns
+tags:
+  - Design Patterns
+  - Software Engineering
 toc: false
 ---
 

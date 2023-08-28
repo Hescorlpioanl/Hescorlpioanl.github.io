@@ -7,6 +7,8 @@ ribbon: ForestGreen
 description: "My Writeup for Vulnversity machine from TryHackMe"
 categories:
   - Security
+tags:
+  - TryHackMe
 toc: false
 ---
 

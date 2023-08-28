@@ -7,6 +7,8 @@ ribbon: ForestGreen
 description: "a quick start guide to start using Git and Github the most famous version control system...."
 categories:
   - Graduation Project Diary
+tags:
+  - Git & Github
 toc: false
 ---
 

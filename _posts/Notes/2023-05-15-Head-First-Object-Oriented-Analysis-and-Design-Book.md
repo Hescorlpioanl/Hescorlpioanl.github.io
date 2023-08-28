@@ -7,6 +7,9 @@ ribbon: ForestGreen
 description: "Head First OOA&D book notes and reviwe"
 categories:
   - Notes
+tags:
+  - OOA&D
+  - Java
 toc: true
 ---
 

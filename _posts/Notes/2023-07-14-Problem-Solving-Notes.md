@@ -7,6 +7,9 @@ ribbon: ForestGreen
 description: "My Notes that I take during solving leetcode problems and other platforms"
 categories:
   - Notes
+tags:
+  - leetcode
+  - problem solving
 toc: true
 ---
 
