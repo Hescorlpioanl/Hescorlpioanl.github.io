@@ -2,11 +2,11 @@
 title: "Head First Object Oriented analysis & Design Notes"
 classes: wide
 header:
-  teaser: /assets/images/Blogs/Graduation-Project-Diray/head_first_object_oriented_analysis_and_design.jpg
+  teaser: /assets/images/Blogs/Learning-Notes/head_first_object_oriented_analysis_and_design.jpg
 ribbon: ForestGreen
 description: "Head First OOA&D book notes and reviwe"
 categories:
-  - Learning Notes
+  - Notes
 toc: true
 ---
 

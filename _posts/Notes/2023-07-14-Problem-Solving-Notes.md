@@ -6,7 +6,7 @@ header:
 ribbon: ForestGreen
 description: "My Notes that I take during solving leetcode problems and other platforms"
 categories:
-  - Learning Notes
+  - Notes
 toc: true
 ---
 

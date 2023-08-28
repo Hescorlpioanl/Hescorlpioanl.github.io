@@ -1,12 +1,12 @@
 ---
-title: "SINGLETON DESIGN PATTERN"
+title: "Singleton Design Pattern"
 classes: wide
 header:
-  teaser: /assets/images/Blogs/Graduation-Project-Diray/SINGLETON-DESIGN-PATTERN/thumbnail.png
+  teaser: /assets/images/Blogs/Design-Patterns/design-patterns.png
 ribbon: ForestGreen
 description: "Singleton Design Pattern in a nutshell...."
 categories:
-  - Graduation Project Diary
+  - Design Patterns
 toc: false
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Git And GitHub kickstart - Part 1"
+title: "Git And GitHub kickstart"
 classes: wide
 header:
   teaser: /assets/images/Blogs/Graduation-Project-Diray/Git-And-GitHub-Part-1/thumbnail.png
