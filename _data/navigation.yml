@@ -14,7 +14,7 @@ main:
     url: /categories/#security/
   - title: "Posts"
     url: /categories/#posts/
-    - title: "Test"
-        url: /categories/#test/
+  - title: "Design Patterns"
+    url: /categories/#design-patterns/
   # - title: "Quick-Start Guide"
   # url: https://google.com
