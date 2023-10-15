@@ -3,8 +3,6 @@ title: "SQL Notes"
 classes: wide
 header:
   teaser: /assets/images/Blogs/Learning-Notes/sql.png
-  image: /assets/images/Blogs/Learning-Notes/sql.png
-  og_image: /assets/images/Blogs/Learning-Notes/sql.png
 ribbon: ForestGreen
 description: "My cheat sheet for MySQL"
 categories:
