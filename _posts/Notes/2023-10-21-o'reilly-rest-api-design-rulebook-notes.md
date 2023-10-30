@@ -45,6 +45,7 @@ In this chapter, we will talk about the URI design the URIs and its identifiers,
     - ❌ http://api.example.restapi.org/blogs/mark-masse/entries/this_is_my_first_post
 
 - Lowercase letters should be preferred in URI paths
+
     | No. | URI | Note |
     |:--: |:--- | :--- |
     |  1  | http://api.example.restapi.org/my-folder/my-doc | Totaly fine |
