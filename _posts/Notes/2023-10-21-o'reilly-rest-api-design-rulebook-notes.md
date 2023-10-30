@@ -4,7 +4,7 @@ classes: wide
 header:
     teaser: /assets/images/Blogs/Learning-Notes/rest-api-design-rulebook.png
 ribbon: ForestGreen
-description: "nmy notes for best practice for designing a web RESTful APIs"
+description: "my notes for best practice for designing a web RESTful APIs"
 categories:
     - Notes
 tags:
@@ -20,6 +20,7 @@ toc_sticky: true
 بسم الله الرحمن الرحيم <br> احييكم بتحية الإسلام السلام عليكم ورحمة الله تعالى وبركاته
 
 </div>
+<br>
 
 # Chapter 01: Introduction
 
@@ -32,38 +33,38 @@ In this chapter, we will talk about the URI design the URIs and its identifiers,
 `URI = scheme "://" authority "/" path [ "?" query ] [ "#" fragment ]`
 
 ## URIs & Formats
-- Forward slash separator `/` must be used to indicate a hierarchical relationship between resources, Examples:
+- **Forward slash separator `/` must be used to indicate a hierarchical relationship between resources, Examples:**
     - ✅ http://api.canvas.restapi.org/shapes/polygons/quadrilaterals/squares
     - ✅ http://localhost:8000/api/v1/accounts/1/orders 
 
-- A trailing forward slash (/) should not be included in URIs, Examples:
+- **A trailing forward slash (/) should not be included in URIs, Examples:**
     - ✅ http://localhost:8000/api/v1/accounts/1/orders
     - ❌ http://localhost:8000/api/v1/accounts/1/orders/
 
-- Use Hyphens `( - )` instead of Underscores `( _ )` to improve the readability of names in long path segments, Examples:
+- **Use Hyphens `( - )` instead of Underscores `( _ )` to improve the readability of names in long path segments, Examples:**
     - ✅ http://api.example.restapi.org/blogs/mark-masse/entries/this-is-my-first-post
     - ❌ http://api.example.restapi.org/blogs/mark-masse/entries/this_is_my_first_post
 
-- Lowercase letters should be preferred in URI paths
+- **Lowercase letters should be preferred in URI paths**
 
     | No. | URI | Note |
     |:--: |:--- | :--- |
     |  1  | http://api.example.restapi.org/my-folder/my-doc | Totaly fine |
     |  2  | HTTP://API.EXAMPLE.RESTAPI.ORG/my-folder/my-doc | URI number `2` is the same as the URI number `1` |
-    |  3  | http://api.example.restapi.org/My-Folder/my-doc | This isn't the same as number `1` or `2`|
+    |  3  | [http://api.example.restapi.org/My-Folder/my-doc]() | This isn't the same as number `1` or `2`|
 
-- File extensions should not be included in URIs. Instead of providing resource extension use the `Accept` request header.
-    - ✅ http://api.college.restapi.org/students/3248234/transcripts/2005/fall
-    - ❌ http://api.college.restapi.org/students/3248234/transcripts/2005/fall.json
+- **File extensions should not be included in URIs. Instead of providing resource extension use the `Accept` request header.**
+    - ✅ [http://api.college.restapi.org/students/3248234/transcripts/2005/fall]()
+    - ❌ [http://api.college.restapi.org/students/3248234/transcripts/2005/fall.json]()
 
 
 ## URI Authority Design
 
-- Consistent subdomain names should be used for your APIs
+- *Consistent subdomain names should be used for your APIs*
 
 The top-level domain and first subdomain names (e.g., soccer.restapi.org) of an API should identify its service owner. The full domain name of an API should add a subdomain named api. For example: http://api.soccer.restapi.org
 
-- Consistent subdomain names should be used for your client developer portal
+- **Consistent subdomain names should be used for your client developer portal**
 
 Use http://developer.soccer.restapi.org to help onboard new clients with documentation, forums, and self-service provisioning of secure API access keys
 
@@ -74,31 +75,31 @@ Use http://developer.soccer.restapi.org to help onboard new clients with documen
 
 ## URI Path Design
 
-- A singular noun should be used for `document` names
+- **A singular noun should be used for `document` names**
     - ✅ http://api.soccer.restapi.org/leagues/seattle/teams/trebuchet/players/claudio
 
-- A plural noun should be used for `collection` annd `store` names
+- **A plural noun should be used for `collection` annd `store` names**
     - ✅ http://api.soccer.restapi.org/leagues/seattle/teams/trebuchet/players
 
     - ✅ http://api.music.restapi.org/artists/mikemassedotcom/playlists
 
-- A verb or verb phrase should be used for `controller` names
+- **A verb or verb phrase should be used for `controller` names**
     - ✅ http://api.college.restapi.org/students/morgan/register
     - ✅ http://api.example.restapi.org/lists/4324/dedupe
 
-- Variable path segments may be substituted with identity-based values.
+- **Variable path segments may be substituted with identity-based values.**
     - Template: http://api.soccer.restapi.org/leagues/{leagueId}/teams/{teamId}/players/{playerId} 
     - Example: http://api.soccer.restapi.org/leagues/seattle/teams/trebuchet/players/21
 
-- CRUD function names should not be used in URIs
+- **CRUD function names should not be used in URIs**
     - ❌ http://api.college.restapi.org/students/morgan/delete
 
 ## URI Query Design
 
-- The query component of a URI may be used to filter `collections` or `stores`.
+- **The query component of a URI may be used to filter `collections` or `stores`.**
     - http://api.college.restapi.org/users?role=admin
 
-- The query component of a URI should be used to paginate collection or store results.
+- **The query component of a URI should be used to paginate collection or store results.**
     - http://api.college.restapi.org/users?pageSize=25&pageStartIndex=50
 
 When the complexity of a client’s pagination (or filtering) requirements exceeds the simple formatting capabilities of the query part, consider designing a special controller resource that partners with a `collection` or `store` such as this `http://api.college.restapi.org/users?search` the `search` controller may accept more complex inputs via a request’s entity body instead of the URI’s query part.
