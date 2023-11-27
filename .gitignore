@@ -11,6 +11,10 @@ vendor/
 # Ignore theme folders
 docs/
 test/
+.idea
+
+# ignore not ready posts
 _posts/Notes/2023-10-12-spring-boot-notes.md
 _posts/Software-Engineering/2023-08-28-defensive-programming-101.md
-.idea
+_posts\Notes\2023-10-01-sql-cheat-sheet.md
+_posts\Notes\2023-07-14-Problem-Solving-Notes.md

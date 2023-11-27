@@ -104,6 +104,51 @@ Use `http://developer.soccer.restapi.org` to help onboard new clients with docum
 
 When the complexity of a client’s pagination (or filtering) requirements exceeds the simple formatting capabilities of the query part, consider designing a special controller resource that partners with a `collection` or `store` such as this `http://api.college.restapi.org/users?search` the `search` controller may accept more complex inputs via a request’s entity body instead of the URI’s query part.
 
+
+# Chapter 03: Interaction Design with HTTP
+This chapter discussing request methods and response status codes.
+
+HTTP request line Syntax:
+```
+Method SP Request-URI SP HTTP-Version CRLF
+```
+
+## Request Methods
+
+**GET and POST must not be used to tunnel other request methods**
+
+Means that HTTP's GET and POST methods should not be employed to emulate or mimic other HTTP request methods, such as PUT, DELETE, or PATCH. Each HTTP method has a specific purpose, and using GET and POST to perform actions that should be handled by other methods is not a recommended practice for designing RESTful APIs.
+
+**GET must be used to retrieve a representation of a resource**
+
+Use the `GET` method to retrieve a resource, GET requests may contain Headers but nobody. no constraints preventing you from sending a body in a GET request but it's not preferable as a best practice.
+
+**HEAD should be used to retrieve response headers**
+
+Clients use HEAD to retrieve the headers without a body. In other words, HEAD returns the same response as GET, except that the API returns an empty body.
+
+**PUT must be used to both insert and update a stored resource.**
+
+Must return the new representations of the updated and created resource
+
+**POST must be used to create a new resource and Execute Contollers**
+
+The POST requestt body contains the suggested state representation of the new resource to be added to the server-owned collection.
+
+Also, it's used to invoke `function-oriented` controller resources such as if we have an email confirmation mechanism that sends a confirmation code to the client in email, and we need to create the `resend code` functionality. we must use the POST Method to call the endpoint that resends the confirmation code.
+
+**DELETE must be used to remove a resource from its parent**
+
+After performing the DELETE request the resource must not be available to the client anymore, which means the next `GET/Head` Must return a `404` Status Code.
+
+**OPTIONS should be used to retrieve the resource’s available interactions**
+
+The response body may contain a list of links that describe the available actions and links that can be done with the specified resource.
+
+## Response Status Codes
+
+
+
 ---
 
 # Refrences
