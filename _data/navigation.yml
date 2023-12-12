@@ -14,5 +14,7 @@ main:
     url: /categories/#posts/
   - title: "Design Patterns"
     url: /categories/#design-patterns/
+  - title: "Life"
+    url: /categories/#life/
   # - title: "Quick-Start Guide"
   # url: https://google.com
