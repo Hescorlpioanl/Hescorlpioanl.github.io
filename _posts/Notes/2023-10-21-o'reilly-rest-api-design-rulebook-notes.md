@@ -26,29 +26,29 @@ toc_sticky: true
 
 ## Hello World Wide Web
 
-In the `Data acquisition and control` group at the **European organization for Nuclear Research (CERN)**, The web starts with a clever programmer who had a great idea for a new
+In the `Data Acquisition and Control` group at the **European organization for Nuclear Research (CERN)**, The web starts with a clever programmer who had a great idea for a new
 software project.
 
 ![Tim photo](https://cds.cern.ch/images/CERN-GE-9407011-31/file?size=large)
 
-In December 1990, `Tim Berners-Lee` started a non-profit software project calles "WorldWideWeb" to facilitate the sharing of knowledge. He worked on this projct for a year and he invented and implemented the following:
+In December 1990, `Tim Berners-Lee` started a non-profit software project called "WorldWideWeb" to facilitate the sharing of knowledge. He worked on this project for a year and he invented and implemented the following:
 
 - The Uniform Resource Identifier (**URI**)
 - The HyperText Transfer Protocol (**HTTP**)
 - The HyperText Markup Language (**HTML**)
 - The first web server
-- The first web browser called **WorldWideWeb** then caleed **Nexua**
+- The first web browser called **WorldWideWeb** then called **Nexua**
 - The first **WYSIWYG** HTML editor.
 
 **WYSIWYG** is standing for: What You See Is What You Get.
 
 ![the first website on the web](https://cds.cern.ch/images/CERN-HOMEWEB-PHO-2019-004-1/file?size=large)
 
-On August 1991, the web bfgan to grow exponentially, within five years the number of web users skyrocket to 40 million, The number was doubling every two months. The Web was growing too large, too fast, and it was heading to collapse because the web traffic was outgrowing the capacity of the internet infrastructure.in addition to the Web's protocols were not uniformaly implemented and they lacked support for caches and other stablizaing intermediaries.
+In August 1991, the web began to grow exponentially, within five years the number of web users skyrocketed to 40 million, The number was doubling every two months. The Web was growing too large, too fast, and it was heading to collapse because the web traffic was outgrowing the capacity of the internet infrastructure.in addition the Web's protocols were not uniformly implemented and they lacked support for caches and other stabilizing intermediaries.
 
 ## Web Architecture
 
-In late 1993, Roy Fielding, co-founder of the Apache HTTP Server Project, Become concerned by the web's scaability problem. After analyzing, Fielding recognized that the web's scaability was governed by a set of key constraints. it was a 6 constraints as the following:
+In late 1993, Roy Fielding, co-founder of the Apache HTTP Server Project, Became concerned by the web's scalability problem. After analyzing, Fielding recognized that the web's scalability was governed by a set of key constraints. It was a 6 constraints as the following:
 
 - **Client-Server**
 - **Uniform Interface**
@@ -59,7 +59,7 @@ In late 1993, Roy Fielding, co-founder of the Apache HTTP Server Project, Become
 
 ### Client-Server
 
-The separation of concerns is the core theme of the Web’s client-server constraints. The Web is a client-server based system, in which clients and servers have distinct parts to play. They may be implemented and deployed independently, using any language or technology, so long as they conform to the Web’s `uniform interface`.
+The separation of concerns is the core theme of the Web’s client-server constraints. The Web is a client-server-based system, in which clients and servers have distinct parts to play. They may be implemented and deployed independently, using any language or technology, so long as they conform to the Web’s `uniform interface`.
 
 ### Uniform Interface
 
@@ -92,7 +92,7 @@ The stateless constraint dictates that a web server is not required to memorize 
 
 ### Code-On-Demand
 
-The Web makes heavy use of code-on-demand, a constraint which enables web servers to temporarily transfer executable programs, such as scripts or plug-ins, to clients. like the code that run on the old flash player.
+The Web makes heavy use of code-on-demand, a constraint that enables web servers to temporarily transfer executable programs, such as scripts or plug-ins, to clients. like the code that runs on the old Flash Player.
 
 ## Web Standards
 
@@ -123,17 +123,45 @@ In this chapter, we will talk about the URI design the URIs and its identifiers,
 - **Forward slash separator `/` must be used to indicate a hierarchical relationship between resources, Examples:**
 
   - ✅ `http://api.canvas.restapi.org/shapes/polygons/quadrilaterals/squares`
-  - ✅ `http://localhost:8000/api/v1/accounts/1/orders `
+  - ✅ `http://localhost:8000/api/v1/accounts/1/orders`
+  - ✅ `http://localhost:8000/api/v1/lessons/1/words` such as the following implementation:
+
+  ```java
+    @GetMapping("/{id}/words")
+    public ResponseEntity<?> goodExample(@PathVariable Integer id){}
+  ```
 
 - **A trailing forward slash (/) should not be included in URIs, Examples:**
 
   - ✅ `http://localhost:8000/api/v1/accounts/1/orders`
+
+  ```java
+    @GetMapping("/{id}/words")
+    public ResponseEntity<?> goodExample(@PathVariable Integer id){}
+  ```
+
   - ❌ `http://localhost:8000/api/v1/accounts/1/orders/`
+
+  ```java
+    @GetMapping("/{id}/words/")
+    public ResponseEntity<?> badExample(@PathVariable Integer id){}
+  ```
 
 - **Use Hyphens `( - )` instead of Underscores `( _ )` to improve the readability of names in long path segments, Examples:**
 
   - ✅ `http://api.example.restapi.org/blogs/mark-masse/entries/this-is-my-first-post`
+
+  ```java
+    @GetMapping("/{id}/lesson-words")
+    public ResponseEntity<?> goodExample(@PathVariable Integer id){}
+  ```
+
   - ❌ `http://api.example.restapi.org/blogs/mark-masse/entries/this_is_my_first_post`
+
+  ```java
+    @GetMapping("/{id}/lesson_words")
+    public ResponseEntity<?> badExample(@PathVariable Integer id){}
+  ```
 
 - **Lowercase letters should be preferred in URI paths**
 
@@ -144,16 +172,33 @@ In this chapter, we will talk about the URI design the URIs and its identifiers,
   |  3  | `http://api.example.restapi.org/My-Folder/my-doc` | This isn't the same as number `1` or `2`         |
 
 - **File extensions should not be included in URIs. Instead of providing resource extension use the `Accept` request header.**
+
   - ✅ `http://api.college.restapi.org/students/3248234/transcripts/2005/fall`
   - ❌ `http://api.college.restapi.org/students/3248234/transcripts/2005/fall.json`
 
+  ```java
+    @GetMapping(path = "/{document}", produces = {MediaType.APPLICATION_JSON_VALUE,
+                                                  MediaType.APPLICATION_XML_VALUE})
+        public String getData(
+            @RequestHeader("Accept") String acceptHeader,
+            @PathVariable String document)
+        {
+            // Client accepts JSON // fetch and return data as json here
+            if (acceptHeader.contains(MediaType.APPLICATION_JSON_VALUE)) {}
+            // Client accepts XML fetch and return data as xml here
+            else if (acceptHeader.contains(MediaType.APPLICATION_XML_VALUE)) {}
+            // Client accepts neither JSON nor XML, handle accordingly
+            else {}
+        }
+  ```
+
 ## URI Authority Design
 
-- _Consistent subdomain names should be used for your APIs_
+**_Consistent subdomain names should be used for your APIs_**
 
 The top-level domain and first subdomain names (e.g., `soccer.restapi.org`) of an API should identify its service owner. The full domain name of an API should add a subdomain named api. For example: `http://api.soccer.restapi.org`
 
-- **Consistent subdomain names should be used for your client developer portal**
+**_Consistent subdomain names should be used for your client developer portal_**
 
 Use `http://developer.soccer.restapi.org` to help onboard new clients with documentation, forums, and self-service provisioning of secure API access keys
 
@@ -193,7 +238,18 @@ Use `http://developer.soccer.restapi.org` to help onboard new clients with docum
   - `http://api.college.restapi.org/users?role=admin`
 
 - **The query component of a URI should be used to paginate collection or store results.**
+
   - `http://api.college.restapi.org/users?pageSize=25&pageStartIndex=50`
+
+  ```java
+    @GetMapping("")
+    public ResponseEntity<?> getAllUsers(
+    @RequestParam(value = "pageNo", defaultValue = AppConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
+    @RequestParam(value = "pageSize", defaultValue = AppConstants.DEFAULT_PAGE_SIZE, required = false) int pageSize,
+    @RequestParam(value = "sortBy", defaultValue = AppConstants.DEFAULT_SORT_BY, required = false) String sortBy,
+    @RequestParam(value = "order", defaultValue = AppConstants.DEFAULT_SORT_ORDER, required = false) String order
+    ){}
+  ```
 
 When the complexity of a client’s pagination (or filtering) requirements exceeds the simple formatting capabilities of the query part, consider designing a special controller resource that partners with a `collection` or `store` such as this `http://api.college.restapi.org/users?search` the `search` controller may accept more complex inputs via a request’s entity body instead of the URI’s query part.
 
@@ -238,8 +294,6 @@ After performing the DELETE request the resource must not be available to the cl
 **OPTIONS should be used to retrieve the resource’s available interactions**
 
 The response body may contain a list of links that describe the available actions and links that can be done with the specified resource.
-
-## Response Status Codes
 
 ---
 
