@@ -253,11 +253,11 @@ Use `http://developer.soccer.restapi.org` to help onboard new clients with docum
 
 When the complexity of a client’s pagination (or filtering) requirements exceeds the simple formatting capabilities of the query part, consider designing a special controller resource that partners with a `collection` or `store` such as this `http://api.college.restapi.org/users?search` the `search` controller may accept more complex inputs via a request’s entity body instead of the URI’s query part.
 
+---
+
 # Chapter 03: Interaction Design with HTTP
 
-This chapter discussing request methods and response status codes.
-
-HTTP request line Syntax:
+in this chapter we'll discussing request methods and response status codes. HTTP request line Syntax:
 
 ```
 Method SP Request-URI SP HTTP-Version CRLF
@@ -267,15 +267,15 @@ Method SP Request-URI SP HTTP-Version CRLF
 
 **GET and POST must not be used to tunnel other request methods**
 
-Means that HTTP's GET and POST methods should not be employed to emulate or mimic other HTTP request methods, such as PUT, DELETE, or PATCH. Each HTTP method has a specific purpose, and using GET and POST to perform actions that should be handled by other methods is not a recommended practice for designing RESTful APIs.
+Means that HTTP's `GET` and `POST` methods should not be employed to emulate or mimic other HTTP request methods, such as PUT, DELETE, or PATCH. Each HTTP method has a specific purpose, and using GET and POST to perform actions that should be handled by other methods is not a recommended practice for designing RESTful APIs.
 
 **GET must be used to retrieve a representation of a resource**
 
-Use the `GET` method to retrieve a resource, GET requests may contain Headers but nobody. no constraints preventing you from sending a body in a GET request but it's not preferable as a best practice.
+Use the `GET` method to retrieve a resource, GET requests may contain Headers but nobody. _No constraints preventing you from sending a body in a GET request but it's not preferable as a best practice._
 
 **HEAD should be used to retrieve response headers**
 
-Clients use HEAD to retrieve the headers without a body. In other words, HEAD returns the same response as GET, except that the API returns an empty body.
+Clients use `HEAD` to retrieve the headers without a body. In other words, HEAD returns the same response as GET, except that the API returns an empty body.
 
 **PUT must be used to both insert and update a stored resource.**
 
@@ -283,17 +283,103 @@ Must return the new representations of the updated and created resource
 
 **POST must be used to create a new resource and Execute Contollers**
 
-The POST requestt body contains the suggested state representation of the new resource to be added to the server-owned collection.
+The `POST` requestt body contains the suggested state representation of the new resource to be added to the server-owned collection.
 
-Also, it's used to invoke `function-oriented` controller resources such as if we have an email confirmation mechanism that sends a confirmation code to the client in email, and we need to create the `resend code` functionality. we must use the POST Method to call the endpoint that resends the confirmation code.
+Also, it's used to invoke `function-oriented` controller resources such as if we have an email confirmation mechanism that sends a confirmation code to the client in email, and we need to create the **resend code** functionality. we must use the POST Method to call the endpoint that resends the confirmation code. Example: `/users/100/resend`
 
 **DELETE must be used to remove a resource from its parent**
 
-After performing the DELETE request the resource must not be available to the client anymore, which means the next `GET/Head` Must return a `404` Status Code.
+After performing the `DELETE` request the resource must not be available to the client anymore, which means the next `GET/Head` Must return a `404` Status Code.
 
 **OPTIONS should be used to retrieve the resource’s available interactions**
 
-The response body may contain a list of links that describe the available actions and links that can be done with the specified resource.
+Clients may use the `OPTIONS` request method to retrieve resource metadata that includes an `Allow` header value. For example:
+`Allow: GET, PUT, DELETE`. The response body may contain a list of links that describe the available actions and links that can be done with the specified resource.
+
+## Response Status Codes
+
+|        Category        | Description                                                                                    |
+| :--------------------: | :--------------------------------------------------------------------------------------------- |
+| **1xx**: Informational | Communicates transfer protocol-level information.                                              |
+|    **2xx**: Success    | Indicates that the client’s request was accepted successfully.                                 |
+|  **3xx**: Redirection  | Indicates that the client must take some additional action in order to complete their request. |
+| **4xx**: Client Error  | This category of error status codes points the finger at clients.                              |
+| **5xx**: Server Error  | The server takes responsibility for these error status codes                                   |
+
+**200 (“OK”) should be used to indicate nonspecific success**
+It indicates that the REST API successfully carried out whatever action the client requested, A 200 response should include a response body.
+
+**200 (“OK”) must not be used to communicate errors in the response body**
+
+**201 (“Created”) must be used to indicate successful resource creation**
+return the newly created resource in the response body.
+
+**202 (“Accepted”) must be used to indicate successful start of an asynchronous action**
+A 202 response indicates that the client’s request will be handled asynchronously. This response status code tells the client that the request appears valid, but it still may have problems once it’s finally processed. it's used with controller resources.
+
+**204 (“No Content”) should be used when the response body is intentionally empty**
+The 204 status code is usually sent out in response to a `PUT`, `POST`, or `DELETE` request, when the REST API declines to send back any status message or representation in the response message’s body.
+
+An API may also send 204 in conjunction with a `GET` request to indicate that the requested resource exists, but has _no state representation to include in the body_.
+
+**301 (“Moved Permanently”) should be used to relocate resources**
+
+The 301 status code indicates that the REST API’s resource model has been significantly `redesigned` and a new permanent URI has been assigned to the client’s requested resource. The REST API `should specify` the new URI in the response’s `Location` header.
+
+**302 (“Found”) should not be used**
+
+The intended semantics of the 302 response code have been misunderstood by programmers and incorrectly implemented in programs since version 1.0 of the HTTP
+protocol.
+
+The confusion centers on whether it is appropriate for a client to `always automatically issue a follow-up GET request` to the URI in response’s `Location` header, regardless of the original request’s method.
+
+**303 (“See Other”) should be used to refer the client to a different URI**
+
+A 303 response indicates that a controller resource has finished its work, but instead of sending a potentially unwanted response body, it sends the client the URI of a response resource. Then the client can perform GET to the value of the `Location` header.
+
+**304 (“Not Modified”) should be used to preserve bandwidth**
+
+used when there is nothing to send in the body, whereas 304 is used when there is state information associated with a resource but the client already has the most recent version of the representation.
+
+**307 (“Temporary Redirect”) should be used to tell clients to resubmit the request to another URI**
+
+A REST API can use this status code to assign a temporary URI to the client’s requested resource. For example, a 307 response can be used to shift a client request over to another host.
+
+**400 (“Bad Request”) may be used to indicate nonspecific failure**
+
+400 is the generic client-side error status, used when no other 4xx error code is appropriate.
+
+**401 (“Unauthorized”) must be used when there is a problem with the client’s credentials**
+
+**403 (“Forbidden”) should be used to forbid access regardless of authorization state**
+
+A 403 error response indicates that the client’s request is formed correctly, but the REST API refuses to honor it.
+
+**404 (“Not Found”) must be used when a client’s URI cannot be mapped to a resource**
+
+**405 (“Method Not Allowed”) must be used when the HTTP method is not supported**
+
+A 405 response must include the Allow header, which lists the HTTP methods that the resource supports. For example: `Allow: GET, POST`
+
+**406 (“Not Acceptable”) must be used when the requested media type cannot be served**
+
+The 406 error response indicates that the API is not able to generate any of the client’s preferred media types, as indicated by the `Accept` request header.
+
+**409 (“Conflict”) should be used to indicate a violation of resource state**
+
+For example, a REST API may return this response code when a client tries to delete a non-empty store resource.
+
+**412 (“Precondition Failed”) should be used to support conditional operations**
+
+The 412 error response indicates that the client specified one or more preconditions in its request headers, effectively telling the REST API to carry out its request only if certain conditions were met. A 412 response indicates that those conditions were not met, so instead of carrying out the request, the API sends this status code.
+
+**415 (“Unsupported Media Type”) must be used when the media type of a request’s payload cannot be processed**
+
+The 415 error response indicates that the API is not able to process the client’s supplied media type, as indicated by the `Content-Type` request header.
+
+**500 (“Internal Server Error”) should be used to indicate API malfunction**
+
+A 500 error is never the client’s fault and therefore it is reasonable for the client to retry the exact same request that triggered this response, and hope to get a different response.
 
 ---
 
