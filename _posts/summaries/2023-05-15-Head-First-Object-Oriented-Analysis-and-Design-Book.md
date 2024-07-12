@@ -6,7 +6,7 @@ header:
 ribbon: ForestGreen
 description: "Head First OOA&D book notes and review"
 categories:
-  - Summaries
+  - Notes
 tags:
   - OOA&D
 toc: true
@@ -22,109 +22,264 @@ toc: true
 
 # Chapter 1: Great Software Begins Here
 
-this chapter starts with _what is the great software?_ question and going to discuss it with a deferent point of views. For example
+## What is great software from different points of view?
 
-- The _customer friend_ sees that the great software does what the customer wants it to do and doesn't give un expected result when we use it in a new way.
-- The _Object-Oriented Programming_ guy sees that the great software has no code duplication, each object controls its own behavior, and finally easy to be extended.
-- The _Design Pattern_ guy sees that the great software is what used a tried-and-true design patterns and principles. Objects are loosely coupled, Open for extension but closed for modifications. finally the code in the software must be reusable.
-- A _Computer science_ student in BFCAI that called Hossam Hamdy sees that the great software is the one which following the best design practices and design patterns to not re invent the wheel again, that software that respect customer requirements but in the same time we don't ignore the engineering side.
+- The _**customer friend**_ sees that the great software does what the customer wants it to do and doesn't give un expected result when we use it in a new way.
+- The _**Object-Oriented Programming**_ guy sees that the great software has no code duplication, each object controls its own behavior, and finally easy to be extended.
+- The _**Design Pattern**_ guy sees that the great software is what used a tried-and-true design patterns and principles. Objects are loosely coupled, Open for extension but closed for modifications. finally the code in the software must be reusable.
+- A _**Computer science student in BFCAI**_ called Hossam Hamdy -Yes it's me 😀- sees that, great software follows the best design practices and design patterns to not re-invent the wheel again, that software that respects customer requirements but at the same time doesn't ignore the engineering side.
 
-The Authors provide an approach for writing a great software with a simple steps:
-**1. Make sure your software does what customer wants it to do.**
-**2. Apply basic OO principles to add flexibilities.**
-**3. Strive for a maintainable reusable design.**
+From all of this points mentioned above, The authors provide us a simple approach for writing great software by applying the following 3 steps:
 
-In this chapter the authors learn me a new thing about _Encapsulation_, we can use it not only for information hiding, but also we can use it to remove duplicated codes. in the following code snippet we have the Guitar class that used in a _ArrayList <Guitar> search(Guitar guitar)_
-That implemented to take each class data member and compare with the client needs.
+1. **Make sure your software does what the customer wants it to do**
+   So here we must make sure that our software is compatible with our customer's requirements/functionalities. No matter how well-designed your application is, If your software functionality does not meet the requirements.
+2. **Apply basic OO principles to add flexibility**
+   Applying some basic OO principles keeps your application flexible and easy to change without worrying about changes and maintenance.
+3. **Strive for a maintainable reusable design**
+   Here we can use Design Patterns It's all about reusing and making sure you’re not trying to solve a problem that someone else has already figured out.
+
+## Encapsulation is not only for data hiding
+
+Here I learned a new concept and use of Encapsulation, It's not about bundling data and methods that work on that data within one unit. we can use it to remove duplicated codes too.
+
+Here I'll use the example mentioned in the book in this chapter, our customer wanna create a new application to manage the inventory of his instrument store.
+
+![image](https://github.com/user-attachments/assets/2b208906-b913-4295-b37e-990672b2af99)
+
+Suppose we have this code snippet for a `Guitar` class that represents a real guitar for an instrument store -I'm using `@Data` from lombok to make Guitar class shorter, by adding `@Data` it will implement all getters and setters for the class attributes `@AllArgsConstructor` to generate all attributes constructor-:
 
 ```java
-
+@Data
+@AllArgsConstructor
 public class Guitar {  
-    private String serialNumber;
-    private double price;
-    private Builder builder;
-    private String model;
-    private Type type;
-    private Wood backWood;
-    private Wood topWood;
-    public String getSerialNumber() {return serialNumber;}
-    public void setSerialNumber(String serialNumber) {this.serialNumber = serialNumber;}
-    public double getPrice() {return price;}
-    public void setPrice(double price) {this.price = price;}
-    public Builder getBuilder() {return builder;}
-    public void setBuilder(Builder builder) {this.builder = builder;}
-    public String getModel() {return model;}
-    public void setModel(String model) {this.model = model;}
-    public Type getType() {return type;}
-    public void setType(Type type) {this.type = type;}
-    public Wood getBackWood() {return backWood;}
-    public void setBackWood(Wood backWood) {this.backWood = backWood;}
-    public Wood getTopWood() {return topWood;}
-    public void setTopWood(Wood topWood) {this.topWood = topWood;}
+    private String serialNumber;
+    private double price;
+    private Builder builder;
+    private String model;
+    private Type type;
+    private Wood backWood;
+    private Wood topWood;
  }
 ```
 
-The problem is that the client doesn't really care about guitar serial number or price so that he doesn't provide the search method with `this` information which make the search method doesn't do its job properly because some data members are Null. so that we can use the Encapsulation to separate the not necessary data from the Guitar object to a new object used for searching such as _GuitarSpec_ that hold all necessary information about the target guitar.
+Our client needs to be able to search for a guitar that meet the store client specification, Lets implement method that does our client search operation and suppose its `Guitar search(Guitar guitar)`
+
+```java
+public class Inventory {
+    private List guitars;
+
+	public Inventory() { guitars = new LinkedList(); }
+
+	public void addGuitar(String serialNumber, double price, String builder, String model,
+						  String type, String backWood, String topWood) {
+		Guitar guitar = new Guitar(serialNumber, price, builder, model, type, backWood, topWood);
+		guitars.add(guitar);
+	}
+
+	public Guitar getGuitar(String serialNumber) {
+		for (Iterator i = guitars.iterator(); i.hasNext(); ) {
+			Guitar guitar = (Guitar)i.next();
+			if (guitar.getSerialNumber().equals(serialNumber)) {
+				return guitar;
+			}
+		}
+		return null;
+	}
+
+	public Guitar search(Guitar searchGuitar) {
+		for (Iterator i = guitars.iterator(); i.hasNext(); ) {
+			Guitar guitar = (Guitar)i.next();
+
+			// Ignore serial number since that’s unique
+			// Ignore price since that’s unique
+
+			String builder = searchGuitar.getBuilder();
+			if ((builder != null) && (!builder.equals("")) &&
+				(!builder.equals(guitar.getBuilder())))
+				continue;
+
+			String model = searchGuitar.getModel();
+			if ((model != null) && (!model.equals("")) &&
+				(!model.equals(guitar.getModel())))
+				continue;
+
+			String type = searchGuitar.getType();
+			if ((type != null) && (!searchGuitar.equals("")) &&
+				(!type.equals(guitar.getType())))
+			continue;
+
+			String backWood = searchGuitar.getBackWood();
+			if ((backWood != null) && (!backWood.equals("")) &&
+				(!backWood.equals(guitar.getBackWood())))
+				continue;
+
+			String topWood = searchGuitar.getTopWood();
+			if ((topWood != null) && (!topWood.equals("")) &&
+				(!topWood.equals(guitar.getTopWood())))
+				continue;
+
+			return guitar;
+		}
+		return null;
+	}
+}
+```
+
+Here is our implementation for `FindGuitarTester` class to test our implementation:
+
+```java
+public class FindGuitarTester {
+
+	public static void main(String[] args) {
+		// Set up Rick’s guitar inventory
+		Inventory inventory = new Inventory();
+
+		initializeInventory(inventory);
+
+		Guitar whatErinLikes = new Guitar("", 0, "fender", "Stratocastor",
+		"electric", "Alder", "Alder");
+
+		Guitar guitar = inventory.search(whatErinLikes);
+		if (Guitar == null) {
+			// print error, can't find anything that match the search criteria
+		} else {
+			// print we get the guitar you wanna
+		}
+	}
+
+}
+```
+
+Here is the customer `Rick` -owner of the application- start using the application but no result found even if the inventory has the specified guitar with `builder:"Fender"` that meet the customer requirements.
+
+This implementation has some issues:
+
+1. **A lot of string literal comparison**
+   Our customer can set the builder to "`fender`", "`Fender`", and "`FeNdEr`" which are all not equal to each other. Yes we can do _toLowerCase()_ or _toUpperCase()_ but this is not the proper solution for all cases.
+
+2. **Client doesn't care about the guitar `serial number` or `price`**
+   The store client doesn't care about the serial number or price so he didn't provide it in the search method.
+
+**For ths issue `#1`**:
+We can solve it by using `enum` type to define our attribute types, This will prevent miss spilling, letters case, and unexpected values from the store client.
+
+For in the case of `model` we can't use Enums because models vary very much. So here we will use `toLowerCase() / toUpperCase()` instead.
+
+Example of `Wood` enum:
+
+```java
+public enum Wood {
+    INDIAN_ROSEWOOD,
+    BRAZILIAN_ROSEWOOD,
+    MAHOGANY,
+    MAPLE,
+    COCOBOLO,
+    CEDAR,
+    ADIRONDACK,
+    ALDER,
+    SITKA;
+
+    public String toString() {
+        switch (this) {
+            case INDIAN_ROSEWOOD:
+                return "Indian Rosewood";
+            case BRAZILIAN_ROSEWOOD:
+                return "Brazilian Rosewood";
+            case MAHOGANY:
+                return "Mahogany";
+            case MAPLE:
+                return "Maple";
+            case COCOBOLO:
+                return "Cocobolo";
+            case CEDAR:
+                return "Cedar";
+            case ADIRONDACK:
+                return "Adirondack";
+            case ALDER:
+                return "Alder";
+            case SITKA:
+                return "Sitka";
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
+}
+```
+
+**For ths issue `#2`**:
+
+Her we can separate the guitar main attributes such as [`price`, `serial`] and guitar specifications attributes such as [`builder`, `model`, `type`, `backWood`, `topWood`].
 
 The new Guitar Class code:
 
 ```java
+@Data
+@AllArgsConstructor
 public class Guitar {
-    private String serialNumber;
-    private double price;
-    // each guitar object must have a GuitarSpec object to describe it.
-    private GuitarSpec guitarSpec;
-    public String getSerialNumber(){
-	    return serialNumber;
-	}  
-    public void setSerialNumber(String serialNumber) {
-	    this.serialNumber = serialNumber;
-	}
-    public GuitarSpec getGuitarSpec() {
-	    return serialNumber;
-	}  
-    public void setGuitarSpec(GuitarSpec guitarSpec) {
-	    this.guitarSpec = guitarSpec;
-	}
- }
-
+    private String serialNumber;
+    private double price;
+    // each guitar object must have a GuitarSpec object to describe it.
+    private GuitarSpec guitarSpec;
+}
 ```
 
 The GuitarSpec Class code
 
 ```java
-
 public class GuitarSpec {  
-    private Builder builder;  
-    private String model;  
-    private Type type;  
-    private Wood backWood;  
-    private Wood topWood;  
-    public Builder getBuilder() {return builder;}  
-    public void setBuilder(Builder builder) {this.builder = builder;}  
-    public String getModel() {return model;}  
-    public void setModel(String model) {this.model = model;}  
-    public Type getType() {return type;}  
-    public void setType(Type type) {this.type = type;}  
-    public Wood getBackWood() {return backWood;}  
-    public void setBackWood(Wood backWood) {this.backWood = backWood;}  
-    public Wood getTopWood() {return topWood;}  
-    public void setTopWood(Wood topWood) {this.topWood = topWood;}  
+    private Builder builder;  
+    private String model;  
+    private Type type;  
+    private Wood backWood;  
+    private Wood topWood;  
+    public Builder getBuilder() {return builder;}  
+    public void setBuilder(Builder builder) {this.builder = builder;}  
+    public String getModel() {return model;}  
+    public void setModel(String model) {this.model = model;}  
+    public Type getType() {return type;}  
+    public void setType(Type type) {this.type = type;}  
+    public Wood getBackWood() {return backWood;}  
+    public void setBackWood(Wood backWood) {this.backWood = backWood;}  
+    public Wood getTopWood() {return topWood;}  
+    public void setTopWood(Wood topWood) {this.topWood = topWood;}  
  }
-
 ```
 
-With this approach we have a good design because in the future if we wanna add a new prosperity to the Guitar we don't need to change the guitar class each time we have a new changes, we just need to add it into the GuitarSpec and the _search()_ method will do it's job. we separate application's parts and encapsulate the part tat might vary/change away from the parts that will stay the same.
+The new search method code:
+
+```java
+public Guitar search(Guitar searchGuitar) {
+	for (Iterator i = guitars.iterator(); i.hasNext(); ) {
+		Guitar guitar = (Guitar)i.next();
+		// Ignore serial number since that’s unique
+		// Ignore price since that’s unique
+        if (searchGuitar.getBuilder() != guitar.getBuilder())
+            continue;
+
+		String model = searchGuitar.getModel().toLowerCase();
+		if ((model != null) && (!model.equals("")) && (!model.equals(guitar.getModel().toLowerCase())))
+			continue;
+
+		if (searchGuitar.getType() != guitar.getType())
+			continue;
+
+		if (searchGuitar.getBackWood() != guitar.getBackWood())
+			continue;
+
+		if (searchGuitar.getTopWood() != guitar.getTopWood())
+			continue;
+	return guitar;
+	}
+
+	return null;
+}
+```
+
+With this approach we have a good design because in the future if we wanna add a new property to the Guitar we don't need to change the guitar class each time, we just need to add it into the `GuitarSpec` and the _search()_ method will do it's job. we separate the application's parts and encapsulate the parts that might `vary/change` away from the parts that will stay the same.
+
 **`Anytime you see duplicate code, look for a place to encapsulate`**.
 
-**Delegation** The act of one object forwarding an operation to another object, to be performed on behalf of the first object. such as _.equals()_ method in java. delegation enables the code reusability, and make it **loosely coupled** (the object have a specific job to do and they do only that job).
-
-|     Idiom      |                                                                                   Description                                                                                    |
-| :------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Functionality  |        Without me, you’ll never actually make the customer happy. No matter how well-designed your application is, I’m the thing that puts a smile on the customer’s face        |
-|  Flexibility   |                               Use me so that your software can change and grow without constant rework. I keep your application from being fragile                               |
-| Encapsulation  | You use me to keep the parts of your code that stay the same separate from the parts that change; then it’s really easy to make changes to your code without breaking everything |
-| Design Pattern |                               I’m all about reuse and making sure you’re not trying to solve a problem that someone else has already figured out.                                |
+**Delegation** The act of one object forwarding an operation to another object, to be performed on behalf of the first object. such as _.equals()_ method in java. delegation enables the code reusability and makes it **loosely coupled** (the object has a specific job to do and they do only that job).
 
 ---
 
