@@ -2,12 +2,13 @@
 title: "Hossam Hamdy in 2023"
 classes: wide
 header:
-  teaser: /assets/images/Blogs/Life/2023.jpg
+  teaser: /assets/images/hossam-logs/2023.jpg
 ribbon: ForestGreen
 description: "2023 in Review: A Year of Unprecedented Events"
 categories:
-  - Life
+  - Hossam.log
 tags:
+  - logs
 ---
 
 Hi, I'm Hossam Hamdy, and it's my first time writing this kind of post. I was inspired to write this type by a publication by engineer [Medhat Dawoud](https://twitter.com/med7atdawoud) on his blog, [link](https://www.medhat.dev/blog/actually-it -was-a-great-year-2020-recap/). I found this type of post very inspiring for me, as it can motivate other to write, as happened to me. Or it will be a documentation of the moments and situations that I experienced during my experiences, to benefit from the lessons, remember what I learned, and follow my personal and technical development.
@@ -62,21 +63,18 @@ It was a great experience to get the latest updates in Zoho apps, and at the eve
 
 ![Screenshot 2023-12-04 034446](https://github.com/0xGhazy/0xGhazy/assets/60070427/f8e5d1cb-f230-4d46-8661-039255ce73d4)
 
-
 ## Update my GitHub Profile
 
 I've updated my GitHub profile to add the books I'm currently reading, projects I'm working on, as well as my skills and social media profiles. Which was greatly admired by my friends, which made me very happy because of their admiration and encouragement to write their own profiles.
 
 ![Screenshot 2023-12-04 034955](https://github.com/0xGhazy/0xGhazy/assets/60070427/4db83094-be7f-4aad-8fd8-9dbdd5d88779)
 
-## I've left Flow Tech House 
+## I've left Flow Tech House
 
 On `26-Nov-2023`, I left [Flow Tech](https://www.linkedin.com/feed/update/urn:li:activity:7134533025891037184/) after 13 months of work during my studies and after graduation. During this period I learned a lot of things about Zoho. This period also affected my personality on many levels. Likewise, even if not all times were good, no one learns for free. I hope for payment and success in what comes next.
 
 ![WhatsApp Image 2023-11-26 at 3 27 35 PM](https://github.com/0xGhazy/0xGhazy/assets/60070427/d8e86a6b-83f6-4584-a1b4-31b730840b08)
 
 ## Start new chapter of my career as Java Developer @ [Mokalmat](https://www.linkedin.com/company/mokalmat/)🎉
-Today `12-Dec-2023` is my first day a Java developer @ Mokalmet company, I am very excited about this new experience and using my skills in my daily work and developing them over time.
 
----
-I'll update this post during the upcoming 16 day to add learned lessons during this year :)
+Today `12-Dec-2023` is my first day a Java developer @ Mokalmat company, I am very excited about this new experience and using my skills in my daily work and developing them over time.
