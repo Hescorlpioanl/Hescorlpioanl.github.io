@@ -6,7 +6,7 @@ header:
 ribbon: ForestGreen
 description: "Head First OOA&D book notes and review"
 categories:
-  - Notes
+  - Summaries
 tags:
   - OOA&D
 toc: true
