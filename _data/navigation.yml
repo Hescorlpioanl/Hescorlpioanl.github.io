@@ -1,20 +1,11 @@
-# main links
 main:
-  - title: "Software Engineering"
-    url: /categories/#software-engineering/
-  - title: "DSA & PS"
-    url: /categories/#dsa-ps/
-  - title: "Graduation Project Diary"
-    url: /categories/#graduation-project-diary/
-  - title: "Book Reviews"
-    url: /categories/#reviews/
-  - title: "Notes"
-    url: /categories/#notes/
+  - title: "Hossam.log"
+    url: /categories/#log/
+  - title: "Blog"
+    url: /categories/#blog/
+  - title: "Summaries"
+    url: /categories/#summary/
   - title: "Security"
     url: /categories/#security/
-  - title: "Posts"
-    url: /categories/#posts/
-  - title: "Design Patterns"
-    url: /categories/#design-patterns/
-  - title: "Life"
-    url: /categories/#life/
+  - title: "Projects"
+    url: /categories/#project/
