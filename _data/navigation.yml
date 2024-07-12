@@ -1,11 +1,11 @@
 main:
   - title: "Hossam.log"
-    url: /categories/#log/
+    url: /categories/#hossam.log
   - title: "Blog"
-    url: /categories/#blog/
+    url: /categories/#blog
   - title: "Summaries"
-    url: /categories/#summary/
+    url: /categories/#summaries
   - title: "Security"
-    url: /categories/#security/
+    url: /categories/#security
   - title: "Projects"
-    url: /categories/#project/
+    url: /categories/#projects
