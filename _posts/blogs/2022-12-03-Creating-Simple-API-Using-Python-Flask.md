@@ -2,11 +2,11 @@
 title: "Creating Simple REST APIv3 Using Python Flask, SQLite3, and Postman"
 classes: wide
 header:
-  teaser: /assets/images/Blogs/Graduation-Project-Diray/Flask/grad3.png
+  teaser: /assets/images/blogs/grad3-thumbnail.png
 ribbon: ForestGreen
 description: "Implementing CRUD API using python flask and SQLite3."
 categories:
-  - Graduation Project Diary
+  - Blog
 tags:
   - Python Flask
   - REST API
@@ -16,23 +16,27 @@ toc: false
 Hello world, Hossam is here, welcome to my 3rd blog in the Graduation Project Diary series, in this blog I try to explain and discuss new things that I have learned during the final year @ BFCAI ❤️. In this post I'll try to explain how to implement Python Flask API for my project teammates to be aware of this topic and do their tasks 😃
 
 # Introduction
+
 Lets start with building Simple CRUD API using Flask and SQLite3, our example project we will create a `Books` table that we can Create, Retrieve, Update, Delete (CRUD). i also will mention how to implement database API that provide you with simple way to interact with database in an easy, and readable way. Our project will handle requests coming from the user via HTTP, and then we will apply this to the database.
 lets start by creating project directory and Database. I'll use this structure.
 
 ```
 /API
 	/cores
-		__intit__.py
+		__inti__.py
 		database_api.py
 		booksDB.db
 	api.py
 ```
 
 # Building Database API
+
 In this section I'll build python class called `DatabaseAPI` to be my interface and formal way to interact with my SQlite3 database. in this approach our API/application code will be clean and free of SQL syntax because all database syntax and operation will be handled by `DatabaseAPI` which is good for encapsulation and abstraction. lets start with the `__init__(self)` method
 
 ### Database Schema
+
 building the Books Table with the following simple code
+
 ```sql
 CREATE TABLE "Books" (
 	"Id"	INTEGER UNIQUE,
@@ -45,7 +49,9 @@ CREATE TABLE "Books" (
 ```
 
 ### Init method`
+
 here in the `__init__()` method we can pass the database name to be connected with, in this approach i can connect to multiple database if i have to, then we created a method to connect to the passed database name to be ready to interact with this resource.
+
 ```python
 import os
 import sqlite3
@@ -60,7 +66,9 @@ class DatabaseAPI:
 ```
 
 ### Database connection handler method
-that returns sqlite3 connection if the connection process goes true. 
+
+that returns sqlite3 connection if the connection process goes true.
+
 ```python
     def db_connect(self) -> sqlite3:
         try:
@@ -70,7 +78,9 @@ that returns sqlite3 connection if the connection process goes true.
 ```
 
 ### Getting all books
-Getting all books from database and `Books` table by using `SELECT *`  and return list of  results.
+
+Getting all books from database and `Books` table by using `SELECT *` and return list of results.
+
 ```python
     def get_all_books(self) -> List[list]:
         cursor = self._connection.cursor()
@@ -79,7 +89,9 @@ Getting all books from database and `Books` table by using `SELECT *`  and retur
 ```
 
 ### Getting Book by id
+
 like the previous code sample but with adding the `WHERE` keyword to filter results for the passing book `id`.
+
 ```python
     def get_book_by_id(self, id) -> List:
         cursor = self._connection.cursor()
@@ -88,7 +100,9 @@ like the previous code sample but with adding the `WHERE` keyword to filter resu
 ```
 
 ### Insert and update a Book
+
 i implement 2 methods that takes a book object/dict and passing it to the `INSERT` statement then commit this action to the database, another method do the same but it perform update action using `SET` statement with the book id to update a specific book.
+
 ```python
     def insert_book(self, book_data: dict):
         cursor = self._connection.cursor()
@@ -112,6 +126,7 @@ i implement 2 methods that takes a book object/dict and passing it to the `INSER
 ```
 
 ### Deleting Book by id
+
 ```python
     def delete_book(self, id):
         cursor = self._connection.cursor()
@@ -119,7 +134,7 @@ i implement 2 methods that takes a book object/dict and passing it to the `INSER
         self._connection.commit()
 ```
 
-## Put altogether 
+## Put altogether
 
 ```python
 import os
@@ -173,7 +188,7 @@ class DatabaseAPI:
         cursor = self._connection.cursor()
         cursor.execute(f"""DELETE FROM Books WHERE Id = {id};""")
         self._connection.commit()
-        
+       
 
 if __name__ == "__main__":
     databaseObj = DatabaseAPI("booksDB.db")
@@ -181,8 +196,8 @@ if __name__ == "__main__":
 
 # Building Flask API
 
+## Init the flask Application
 
-## Init the flask Application 
 ```python
 # Importing Required classes
 from flask import Flask, request
@@ -203,17 +218,18 @@ using the previous simple lines of code, we have created an endpoint `hello` whi
 
 ![Pasted image 20221203145707](https://user-images.githubusercontent.com/60070427/205449640-491f79cb-063c-437a-87d2-1f48c28937cb.png)
 
-
-Our application is running on Port `5000` in the following URL `http://127.0.0.1:5000` lets send Get Request to our application at the following `http://127.0.0.1:5000/hello` endpoint. 
-
+Our application is running on Port `5000` in the following URL `http://127.0.0.1:5000` lets send Get Request to our application at the following `http://127.0.0.1:5000/hello` endpoint.
 
 ![Pasted image 20221203145945](https://user-images.githubusercontent.com/60070427/205449654-87ea1b88-3280-4b4b-a147-e1cbfa7ba73e.png)
 
 ## Handling GET requests
+
 Lets create 2 endpoints to handle the two type of GET requests, our user may wanna list all books or get one book by it's id so ew need to implement this two situations separately.
 
 ### Get Book by id
+
 getting book from the Books table by it's passed id parameter after `books/` in url
+
 ```python
 @app.route("/books/<id>", methods=["GET"])
 def get_book_by_id(id: int) -> str:
@@ -228,7 +244,9 @@ def get_book_by_id(id: int) -> str:
 ```
 
 ### Get all Books
-the following code will handle all `GET` requests for `/books` end point and return all books that exist in Books table. 
+
+the following code will handle all `GET` requests for `/books` end point and return all books that exist in Books table.
+
 ```python
 @app.route("/books", methods=["GET"])
 def get_all_books() -> list:
@@ -242,7 +260,9 @@ def get_all_books() -> list:
 ```
 
 ## Handling POST requests
+
 post requests for adding new book to our database, in this section for `POST` and `PUT` methods we need to read the passed data in the request body, we can do that by using `request` from flask class then access the `data` key like the following line
+
 ```python
 request_body = json.loads(request.data.decode())
 ```
@@ -267,7 +287,9 @@ def add_new_book() -> str:
 ```
 
 ## Handling PUT requests
+
 Returning the updated record after operation done successfully. Note that we pass `id` after `/books/` to apply the update operation to that specific book.
+
 ```python
 @app.route("/books/<id>", methods=["PUT"])
 def update_book(id: int) -> str:
@@ -286,7 +308,9 @@ def update_book(id: int) -> str:
 ```
 
 ## Handling DELETE requests
+
 Deleting book by it's id then returning the deleted book record.
+
 ```python
 @app.route("/books/<id>", methods=["DELETE"])
 def delete_book(id: int) -> str:
@@ -302,17 +326,18 @@ def delete_book(id: int) -> str:
     return response
 ```
 
-## Put altogether 
-at the end our API looks like the following 
+## Put altogether
+
+at the end our API looks like the following
 
 ```python
 from flask import Flask, request, jsonify
 import json
 from cores.database_api import DatabaseAPI
-  
+
 # init Flask application
 app = Flask(__name__)
-  
+
 # Simple Endpoint to return Hello world message
 @app.route("/hello", methods=["GET"])
 def home():
@@ -392,39 +417,47 @@ app.run(debug=True)
 Using the Postman application we will try and test our Implementation.
 
 ### Test POST Method
+
 - simple test data (`raw json data`)
+
 ```json
 {
-    "title": "Building Powerfull API Using Flask",
-    "author": "Hossam hamdy",
-    "description": "DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION",
-    "pages": 100
+  "title": "Building Powerful API Using Flask",
+  "author": "Hossam hamdy",
+  "description": "DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION",
+  "pages": 100
 }
 ```
+
 - URL: http://127.0.0.1:5000/books
 - Result:
-![Pasted image 20221203165017](https://user-images.githubusercontent.com/60070427/205449668-00eab597-34fa-4336-893a-56ff9cb1a9a2.png)
+  ![Pasted image 20221203165017](https://user-images.githubusercontent.com/60070427/205449668-00eab597-34fa-4336-893a-56ff9cb1a9a2.png)
 
 ![Pasted image 20221203165238](https://user-images.githubusercontent.com/60070427/205449686-1e192496-26d3-494a-8af3-03593209b794.png)
 
 ### Test GET Method
+
 As we see in the previous test our book is added successfully, now lets try to get this book by id `4`
 
 - URL: http://127.0.0.1:5000/books/4
 - Result:
-![Pasted image 20221203165445](https://user-images.githubusercontent.com/60070427/205449703-09f9e37e-6df7-447d-9123-8f3c11d311e8.png)
+  ![Pasted image 20221203165445](https://user-images.githubusercontent.com/60070427/205449703-09f9e37e-6df7-447d-9123-8f3c11d311e8.png)
 
 ### Testing PUT Method
-Lets update the  inserted book to be using `NodeJS` instead of python.
+
+Lets update the inserted book to be using `NodeJS` instead of python.
+
 - simple test data (`raw json data`)
+
 ```json
 {
-    "title": "Building Powerfull API Using NodeJS",
-    "author": "hossam hamdy",
-    "description": "DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION",
-    "pages": 100
+  "title": "Building Powerful API Using NodeJS",
+  "author": "hossam hamdy",
+  "description": "DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION",
+  "pages": 100
 }
 ```
+
 - URL: http://127.0.0.1:5000/books/4
 - Result:
 
@@ -438,14 +471,13 @@ Lets update the  inserted book to be using `NodeJS` instead of python.
 
 congrats our API is ready and built successfully 😃.
 
-# Appendix 
- 
- Most modern web applications expose APIs that clients can use to interact with the application. A well-designed web API should aim to support:
+# Appendix
 
--   **Platform independence**. Any client should be able to call the API, regardless of how the API is implemented internally. This requires using standard protocols, and having a mechanism whereby the client and the web service can agree on the format of the data to exchange.
-    
--   **Service evolution**. The web API should be able to evolve and add functionality independently from client applications. As the API evolves, existing client applications should continue to function without modification. All functionality should be discoverable so that client applications can fully use it.
+Most modern web applications expose APIs that clients can use to interact with the application. A well-designed web API should aim to support:
 
-You can use this resource for building robust, well-designed  APIs [Link](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design)
+- **Platform independence**. Any client should be able to call the API, regardless of how the API is implemented internally. This requires using standard protocols, and having a mechanism whereby the client and the web service can agree on the format of the data to exchange.
+- **Service evolution**. The web API should be able to evolve and add functionality independently from client applications. As the API evolves, existing client applications should continue to function without modification. All functionality should be discoverable so that client applications can fully use it.
+
+You can use this resource for building robust, well-designed APIs [Link](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design)
 
 Thank You for reading 😃.

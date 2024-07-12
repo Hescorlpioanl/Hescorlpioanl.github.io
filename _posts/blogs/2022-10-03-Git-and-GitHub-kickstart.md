@@ -2,11 +2,11 @@
 title: "Git And GitHub kickstart"
 classes: wide
 header:
-  teaser: /assets/images/Blogs/Graduation-Project-Diray/Git-And-GitHub-Part-1/thumbnail.png
+  teaser: /assets/images/blogs/git-and-github-thumbnail.png
 ribbon: ForestGreen
 description: "a quick start guide to start using Git and Github the most famous version control system...."
 categories:
-  - Graduation Project Diary
+  - Blog
 tags:
   - Git & Github
 toc: false
@@ -20,27 +20,31 @@ in this post, you will learn what is Git and GitHub and how to create a reposito
 
 this post is not about how Git and GitHub work under the hood, I try to explain the basic idea and usage of Git, and GitHub as an entry-level that is enough to start using it and start a collaboration with your team.
 
-
 ## What is Git?
+
 Git is a **distributed version control system**, which means that the entire codebase and history is available on every developer’s computer, which allows for easy branching and merging.
 
 we use `Distributed` word because when we using git, every developer has his own copy of the project. not as the `Centralized` approach that you have a single “central” copy of your project on a server and commit your changes to this central copy. which leads to a lot of conflicts during working on the same project file.
 
-as we mentioned earlier git is a  **version control system**, in a simple words it's a *change tracker* system, git helps us to detect any changes happened to our source code files, and give us the ability to commit this changes or revert them.
+as we mentioned earlier git is a **version control system**, in a simple words it's a _change tracker_ system, git helps us to detect any changes happened to our source code files, and give us the ability to commit this changes or revert them.
 
 ## Why Git?
+
 Git is one of the most popular **version control system** worldwide, for many reasons such as:
+
 - Git is Smart
-	When we rename files, Git will not be confused with this action and it steals know that file didn't change it's just renamed.
+  When we rename files, Git will not be confused with this action and it steals know that file didn't change it's just renamed.
 - Git is Fast
 - Git is Safe
-	as mentioned above git give us the ability to commit/revoke our changes, it's very useful when we have do some mistakes and want to revoke them., or in the worst case scenario if a hacker pushes mal code to the project files we can revert changes made by him to keep our project and users safe.
+  as mentioned above git give us the ability to commit/revoke our changes, it's very useful when we have do some mistakes and want to revoke them., or in the worst case scenario if a hacker pushes mal code to the project files we can revert changes made by him to keep our project and users safe.
 
-## Git Downsides 
+## Git Downsides
+
 - Git is not the best Choice for Handling Binary Files. binary files usually are big-sized so Git can't deal with these files at the same speed and quality as ASCII files (Source Code).
 - Does not track empty folders
 
 ## What is GitHub?
+
 GitHub is a for-profit company that offers a cloud-based Git repository hosting service.
 we host our project repository (Project Folder) on GitHub to make the team able to access the project at any time and start collaboration.
 
@@ -49,6 +53,7 @@ we host our project repository (Project Folder) on GitHub to make the team able 
 now let's start with the practical part, in this part I suppose you have GitHub Account and Git Client on your machine, you can download Git Client from [here](https://git-scm.com/downloads).
 
 Let's start with creating a new simple project.
+
 ```python
 def add_two_numbers(number1: int, number2: int) -> int:
 	"""Function to calculate the sum of two integer numbers"""
@@ -58,13 +63,14 @@ def add_two_numbers(number1: int, number2: int) -> int:
 if __name__ == '__main__':
     print("10 + 50 = ", add_two_numbers(10, 50))
 ```
+
 I Create this simple console application in a directory called `calculator`
 
 ![2](https://user-images.githubusercontent.com/60070427/195462461-034825b7-7fe1-40c0-b526-c618d21ecb98.png)
 
 we have a project now and we want to start tracking any changes that happened to the project files. so we need to init a new `repository`. first What is the repository?
 
-Git repository is directory that saves the history of all changes made to the files in a Git project, it was a hidden directory called `.git`. once a directory initialized as a git repository we can start adding and tracking changes that happened. to init a new git repository we use  `git init`
+Git repository is directory that saves the history of all changes made to the files in a Git project, it was a hidden directory called `.git`. once a directory initialized as a git repository we can start adding and tracking changes that happened. to init a new git repository we use `git init`
 
 ![3](https://user-images.githubusercontent.com/60070427/195462467-2fb7afeb-040c-4698-ba58-d314df370c5b.png)
 
@@ -80,7 +86,7 @@ the staging area is an area between the working directory -project directory- an
 
 ![5](https://user-images.githubusercontent.com/60070427/195462472-866757c7-852f-4b68-be5c-84bb12d36724.png)
 
-First, we start in the working directory (project folder on your machine) which contains the project files this file is Untracked yet. when we wanna start tracking them we add them to the index or staging area, staging area is An intermediate place where modifications are made to the files and then these changes can be committed to the repository. Once we have committed changes to the repository, we have now a snapshot of the project files at this moment, then the working directory and the Repository are having the same file content. 
+First, we start in the working directory (project folder on your machine) which contains the project files this file is Untracked yet. when we wanna start tracking them we add them to the index or staging area, staging area is An intermediate place where modifications are made to the files and then these changes can be committed to the repository. Once we have committed changes to the repository, we have now a snapshot of the project files at this moment, then the working directory and the Repository are having the same file content.
 Now we know what is the staging area, let's add our files to it to be tracked.
 
 ![6](https://user-images.githubusercontent.com/60070427/195462474-6e43c2f5-e97a-476b-8e1a-8999b29e8aeb.png)
@@ -96,10 +102,11 @@ To take a snapshot of the staged file (move to the repository), we will use `git
 After committing changes, our index/stage area is clean now. I use the `git log` command to display the repository history and the commits and now we can see the commit that we made a few seconds ago.
 
 Assume we want to add a new feature to our great project, features that make our project so strong and trendy. Let's add our feature to the `example.py` file to be like the following
+
 ```python
 def add_two_numbers(number1: int, number2: int) -> int:
     return number1 + number2
-  
+
 def sub_two_numbers(number1: int, number2: int) -> int:
     return number1 - number2
 
@@ -122,7 +129,7 @@ is another pointer that refers to the currently used branch. let's create a new 
 
 ![10](https://user-images.githubusercontent.com/60070427/195462488-bc66b03f-18ea-48bf-b2e3-ebeb8033fca7.png)
 
-using `git branch` to list all branches available in this repository, to delete a specific branch we use `git branch -d <branch-name>`, the green master  branch is the currently used branch so let's switch to the premium branch using `git checkout premium` 
+using `git branch` to list all branches available in this repository, to delete a specific branch we use `git branch -d <branch-name>`, the green master branch is the currently used branch so let's switch to the premium branch using `git checkout premium`
 
 ![11](https://user-images.githubusercontent.com/60070427/195462492-bb88e247-5e27-4316-85c6-8eefc59df879.png)
 
@@ -138,7 +145,7 @@ def sub_two_numbers(number1: int, number2: int) -> int:
 def multiply_two_numbers(number1: int, number2: int) -> int:
     return number1 * number2
 
-def division_two_numbrs(number1: int, number2: int) -> int:
+def division_two_numbers(number1: int, number2: int) -> int:
     if number2 != 0:
         return number1//number2
     return "Second number can't be equals zero"
@@ -148,7 +155,7 @@ if __name__ == '__main__':
     print("10 + 50 = ", add_two_numbers(10, 50))
     print("50 - 20 = ", sub_two_numbers(50, 20))
     print("5 * 20 = ", multiply_two_numbers(5, 20))
-    print("100 - 20 = ", division_two_numbrs(100, 20))
+    print("100 - 20 = ", division_two_numbers(100, 20))
 ```
 
 ![12](https://user-images.githubusercontent.com/60070427/195462497-04193e66-2fb3-463f-afca-da94d8790adf.png)
@@ -160,9 +167,10 @@ i have added the features and commit it to the repository under the premium bran
 now as you can see the master branch steel in the free edition hasn't had the new features that we added above. but what happened under the hood?
 
 using the `git checkout master` command do the following :
+
 - Copy the committed changes by the master branch from the repository to the working directory.
 - Then change the HEAD to the master branch
-what if I wanna change the branch without checkout files from the repository to the working directory? in this case we use the `switch` command `git switch master/premium`.
+  what if I wanna change the branch without checkout files from the repository to the working directory? in this case we use the `switch` command `git switch master/premium`.
 
 using the branching concept in git helps us to organize our work as a team prevent as conflicts as possible, we can create a branch for Fixing issues, features, design, documentation, and engineering...etc.
 
@@ -190,9 +198,10 @@ i use `git remote -v` command to verify the remote repository.
 ![19](https://user-images.githubusercontent.com/60070427/195462525-1a31203d-da14-455c-b7e6-62900f1afe87.png)
 
 i use the `git push -u -f origin master` command to push my files from local machine to the remote machine on GitHub.
-- `-u/--set-upstream` flag used to mark as an _upstream_ reference. This allows you to later perform `git push` and `git pull` commands without having to specify an `origin` since we always want GitHub in this case.
+
+- `-u/--set-upstream` flag used to mark as an *upstream* reference. This allows you to later perform `git push` and `git pull` commands without having to specify an `origin` since we always want GitHub in this case.
 - `-f/--force` This will automatically overwrite everything in the remote directory. We’re using it here to overwrite the default README that GitHub automatically initialized. this will remove the README.md file because it's not in our local machine repository.
-Your GitHub repository must be like this
+  Your GitHub repository must be like this
 
 ![20](https://user-images.githubusercontent.com/60070427/195462527-1ad060dc-99d9-4aca-9bcf-b912a7a114bd.png)
 
@@ -203,11 +212,12 @@ If you find this post useful, share it with your friends to spread the benefit a
 Thank you for reading.
 
 ---
+
 Refs:
+
 - [Git Documentation](https://git-scm.com/doc)
 - [Git Index - javatpoint](https://www.javatpoint.com/git-index)
 - [3.1 Git Branching - Branches in a Nutshell](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
 - [Git Branch](https://www.atlassian.com/git/tutorials/using-branches)
 - [Adding locally hosted code to GitHub](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github)
 - [How to Push an Existing Project to GitHub](https://www.digitalocean.com/community/tutorials/how-to-push-an-existing-project-to-github)
-
