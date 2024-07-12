@@ -2,14 +2,13 @@
 title: "O'Reilly REST API Design Rulebook Notes"
 classes: wide
 header:
-  teaser: /assets/images/Blogs/Learning-Notes/rest-api-design-rulebook.png
+  teaser: /assets/images/summaries/rest-api-design-rulebook.png
 ribbon: ForestGreen
 description: "A summary of lessons learned from the O'Reilly REST API Design Rulebook and some Spring Boot implementations"
 categories:
-  - Notes
+  - Summaries
 tags:
-  - Backend
-  - Design
+  - RESTful API
 toc: true
 toc_sticky: true
 ---
@@ -37,7 +36,7 @@ In December 1990, `Tim Berners-Lee` started a non-profit software project called
 - The HyperText Transfer Protocol (**HTTP**)
 - The HyperText Markup Language (**HTML**)
 - The first web server
-- The first web browser called **WorldWideWeb** then called **Nexua**
+- The first web browser called **WorldWideWeb** then called **Nexus**
 - The first **WYSIWYG** HTML editor.
 
 **WYSIWYG** is standing for: What You See Is What You Get.
@@ -167,7 +166,7 @@ In this chapter, we will talk about the URI design the URIs and its identifiers,
 
   | No. | URI                                               | Note                                             |
   | :-: | :------------------------------------------------ | :----------------------------------------------- |
-  |  1  | `http://api.example.restapi.org/my-folder/my-doc` | Totaly fine                                      |
+  |  1  | `http://api.example.restapi.org/my-folder/my-doc` | Totally fine                                     |
   |  2  | `HTTP://API.EXAMPLE.RESTAPI.ORG/my-folder/my-doc` | URI number `2` is the same as the URI number `1` |
   |  3  | `http://api.example.restapi.org/My-Folder/my-doc` | This isn't the same as number `1` or `2`         |
 
@@ -212,7 +211,7 @@ Use `http://developer.soccer.restapi.org` to help onboard new clients with docum
 
   - ✅ `http://api.soccer.restapi.org/leagues/seattle/teams/trebuchet/players/claudio`
 
-- **A plural noun should be used for `collection` annd `store` names**
+- **A plural noun should be used for `collection` and `store` names**
 
   - ✅ `http://api.soccer.restapi.org/leagues/seattle/teams/trebuchet/players`
 
@@ -281,11 +280,11 @@ Clients use `HEAD` to retrieve the headers without a body. In other words, HEAD 
 
 Must return the new representations of the updated and created resource
 
-**POST must be used to create a new resource and Execute Contollers**
+**POST must be used to create a new resource and Execute Controllers**
 
-The `POST` requestt body contains the suggested state representation of the new resource to be added to the server-owned collection.
+The `POST` request body contains the suggested state representation of the new resource to be added to the server-owned collection.
 
-Also, it's used to invoke `function-oriented` controller resources such as if we have an email confirmation mechanism that sends a confirmation code to the client in email, and we need to create the **resend code** functionality. we must use the POST Method to call the endpoint that resends the confirmation code. Example: `/users/100/resend`
+Also, it's used to invoke `function-oriented` controller resources such as if we have an email confirmation mechanism that sends a confirmation code to the client in email, and we need to create the **resend code** functionality. we must use the POST Method to call the endpoint that response the confirmation code. Example: `/users/100/resend`
 
 **DELETE must be used to remove a resource from its parent**
 

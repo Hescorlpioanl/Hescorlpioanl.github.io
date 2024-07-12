@@ -1,20 +1,25 @@
 ---
-title: "MySQL Cheatsheet"
+title: "MySQL Cheat sheet"
 classes: wide
 header:
-    teaser: /assets/images/Blogs/Learning-Notes/sql.png
+  teaser: /assets/images/summaries/sql.png
 ribbon: ForestGreen
 description: "My notes during study Complete SQL Mastery course"
 categories:
-    - Notes
+  - Summaries
+tags:
+  - Database
 toc: true
 toc_sticky: true
 ---
 
+<br>
 <div align="center">
-بسم الله الرحمن الرحيم, السلام عليكم ورحمة الله وبركاته
-</div>
 
+بسم الله الرحمن الرحيم <br> احييكم بتحية الإسلام السلام عليكم ورحمة الله تعالى وبركاته
+
+</div>
+<br>
 # Introduction
 
 Hello world, Hossam is here. Welcome everyone to my humble blog. In this post, I will write down all the MYSQL syntax that I encountered while studying MYSQL or through my solutions on the HackerRank website and LeetCode. I simply consider this publication to be my notes that make it easier for me to quickly review SQL syntax, which helps me prepare for job interviews, in addition to being a good opportunity to share information with others.
@@ -24,6 +29,7 @@ I wrote the Syntax here through my application of the [Mosh Hamidani course](htt
 **[Note]**: As long as you see these lines, it means that the post is under preparation and not yet completed. If there are any mistakes or misunderstandings of any information from my side, please inform me. Thank you in advance for your efforts.
 
 ---
+
 # Retrieving Data From a Single Table
 
 ## Select statement
@@ -57,13 +63,12 @@ FROM customers
 WHERE points > 3000;
 ```
 
-
 ## Order by clause
 
 Used to order the results by specified column name, it's valid also for allies columns in MySQL, and for unselected columns too.
 
 ```sql
--- get all orders by total_price column (allies) = quantity * unit_price 
+-- get all orders by total_price column (allies) = quantity * unit_price
 SELECT * FROM store.order_items WHERE order_id = 2 ORDER BY quantity * unit_price desc;
 ```
 
@@ -75,7 +80,6 @@ WHERE state = 'FL'
 ORDER BY 1, 2; --1: firstname, 2: last_name
 ```
 
-
 ## Limit clause
 
 used to limit the result by the number of records you wanna return.
@@ -83,9 +87,9 @@ limit clause must come at the end of your query.
 
 ```sql
 -- to get the first 3 records
-SELECT * FROM store.order_items 
-WHERE order_id = 2 
-ORDER BY quantity * unit_price desc 
+SELECT * FROM store.order_items
+WHERE order_id = 2
+ORDER BY quantity * unit_price desc
 LIMIT 3;
 ```
 
@@ -94,32 +98,37 @@ you can use it as a pagination clause using the following syntax.
 ```sql
 -- Here we will skip the first 6 records
 -- then we will return the 3 records after them
-SELECT * FROM store.order_items 
-WHERE order_id = 2 
-ORDER BY quantity * unit_price desc 
+SELECT * FROM store.order_items
+WHERE order_id = 2
+ORDER BY quantity * unit_price desc
 LIMIT 6, 3; --skip the first 6 records and then get the next 3 records only
 ```
 
 ## Operators
 
 ### AND
+
 TRUE if all the conditions separated by AND are TRUE.
+
 ```sql
 SELECT name FROM STATION WHERE LAT_N > 38.7880 AND LAT_N < 137.2345;
 ```
 
 ### OR
+
 TRUE if any of the conditions separated by OR is TRUE.
+
 ```sql
 SELECT name FROM STATION WHERE LAT_N > 38.7880 OR LAT_N < 137.2345;
 ```
 
 ### NOT
+
 Reverses the value of any other Boolean operator.
+
 ```sql
 SELECT name FROM STATION WHERE NOT (LAT_N > 38.7880 AND LAT_N < 137.2345);
 ```
-
 
 ### IN
 
@@ -138,7 +147,7 @@ SELECT * FROM Customers WHERE state NOT IN ('VA', 'FL', 'MX');
 
 ### BETWEEN
 
-TRUE if the operand lies within the range of comparisons.	
+TRUE if the operand lies within the range of comparisons.
 we want to get all customers born after `1990/01/01` and before `2000/01/01`. we can use arithmetic operators such as `<=` or `<=` as follows.
 
 ```sql
@@ -161,12 +170,11 @@ SELECT * FROM store.customers WHERE phone LIKE '%9';
 
 
 -- Get a customer with an address containing Trail or Avenue
-SELECT * FROM store.customers WHERE 
+SELECT * FROM store.customers WHERE
     address LIKE '%Trail%'
     OR
     address LIKE '%Avenue%';
 ```
-
 
 ### REGEXP
 
@@ -203,7 +211,6 @@ if you wanna search for a characters/numbers range use `[start-end]`
 SELECT * FROM store.customers WHERE last_name REGEXP "[a-z]";
 ```
 
-
 ### IS NULL
 
 to get records attributes with null values.
@@ -217,8 +224,8 @@ SELECT * FROM store.customers WHERE phone IS NULL;
 
 # Retrieving Data From Multiple Tables
 
-
 ## Inner Join
+
 returns records that have matching values in both tables
 
 ```sql
@@ -237,7 +244,6 @@ JOIN customers c
 ON o.customer_id = c.customer_id;
 ```
 
-
 ## Joining across databases
 
 ```sql
@@ -247,7 +253,6 @@ FROM order_items oi
 JOIN sql_inventory.products p
 ON oi.product_id = p.product_id;
 ```
-
 
 ## Self join
 
@@ -263,10 +268,9 @@ JOIN employees m -- for managers
 	ON e.reports_to = m.employee_id;
 ```
 
-
 ## Multiple join
 
-join multiple tables with each other 
+join multiple tables with each other
 
 ```sql
 SELECT
@@ -290,13 +294,12 @@ ON oi.order_id = oin.order_id
 AND oi.product_id = oin.product_id
 ```
 
-
 ## Implicit Join
 
 Making join without writing `join`, if you forget to write the condition we will get a cross join.
 
 ```sql
-SELECT * 
+SELECT *
 FROM orders o, customers c
 WHERE o.customer_id = c.customer_id;
 ```
@@ -314,7 +317,6 @@ LEFT OUTER JOIN customers c
 	ON c.customer_id = o.customer_id;
 ```
 
-
 ### Right join
 
 Returns all records from the right table, and the matched records from the left table
@@ -326,11 +328,11 @@ RIGHT OUTER JOIN customers c
 	ON c.customer_id = o.customer_id;
 ```
 
-the `outer`  keyword is optional so you can skip it if you wanna. you can also use the outer join to join multiple tables and you can combine inner and outer joins like this:
+the `outer` keyword is optional so you can skip it if you wanna. you can also use the outer join to join multiple tables and you can combine inner and outer joins like this:
 
 ```sql
 SELECT *
-FROM customers c 
+FROM customers c
 RIGHT JOIN orders o -- outer join
 	ON o.customer_id = c.customer_id
 JOIN shippers sh
@@ -339,7 +341,6 @@ ORDER BY c.customer_id;
 ```
 
 to convert from lest join to outer join or the opposite you can just change the order of tables customers <==> orders, and it'll be done 😃.
-
 
 ## Self outer join
 
@@ -353,14 +354,13 @@ LEFT JOIN employees m -- for managers
 	ON e.reports_to = m.employee_id;
 ```
 
-
 ## Using clause
 
 is useful when both the tables share a column of the same name on which they join.
 
 ```sql
 SELECT *
-FROM customers c 
+FROM customers c
 RIGHT JOIN orders o
 	USING(customer_id)
 JOIN shippers sh
@@ -368,8 +368,7 @@ JOIN shippers sh
 ORDER BY c.customer_id;
 ```
 
-if you have multiple conditions use it as *USING(col1, col2)*.
-
+if you have multiple conditions use it as _USING(col1, col2)_.
 
 ## Natural joins
 
@@ -377,10 +376,9 @@ let the database engine determine the column name to join automatically, it's ma
 
 ```sql
 SELECT *
-FROM customers c 
+FROM customers c
 JOIN shippers sh;
 ```
-
 
 ## Cross join
 
@@ -388,14 +386,13 @@ used to map every record from Table 1 with every record of Table 2, it is used i
 
 ```sql
 SELECT *
-FROM customers c 
+FROM customers c
 CROSS JOIN products p;
 
 -- Also we can use the Implicit from id it
 SELECT *
 FROM customers c, products p;
 ```
-
 
 ## Unions
 
@@ -418,13 +415,13 @@ ORDER BY first_name;
 
 ## Column Attributes
 
-| column | description |
-|:--:|:--|
-|Datatype| determine the column data type|
-| PK | Stands for `primary key` |
-| NN | Stands for `Not Null` used for required fields|
-| UQ | Stands for `Unique` |
-| AI | Stands for `Auto Increment` usually used with the primary key |
+|    column     | description                                                        |
+| :-----------: | :----------------------------------------------------------------- |
+|   Datatype    | determine the column data type                                     |
+|      PK       | Stands for `primary key`                                           |
+|      NN       | Stands for `Not Null` used for required fields                     |
+|      UQ       | Stands for `Unique`                                                |
+|      AI       | Stands for `Auto Increment` usually used with the primary key      |
 | Default Value | Specify the default value of the field if you didn't pass anything |
 
 ---
@@ -464,7 +461,6 @@ CREATE TABLE new_orders AS SELECT * from orders;
 
 `Note` if you use this technique make sure that the copied attribute is copied using values only, if an attribute is `PK` or `AI` it'll be a normal day.
 
-
 ## Update
 
 ```sql
@@ -488,20 +484,19 @@ SET price = 1000
 WHERE customer_id IN (1, 2, 3);
 ```
 
-## Subqueries
+## Sub queries
 
 ```sql
 UPDATE orders
 SET price = 1000
 
--- If we don't know the customer ID but we know the name then we can use the Subqueries
-WHERE customer_id = 
+-- If we don't know the customer ID but we know the name then we can use the Sub queries
+WHERE customer_id =
 			(SELECT customer_id
 			FROM customers
 			WHERE name = "hossam")
 			;
 ```
-
 
 ## Delete
 
@@ -511,7 +506,7 @@ DELETE FROM customers;
 
 -- This will delete all records in the customer table.
 DELETE FROM customers
-WHERE customer_id = 5; -- also you can use the Subqueries here.
+WHERE customer_id = 5; -- also you can use the Sub queries here.
 ```
 
 ---
@@ -525,6 +520,7 @@ here you'll learn how to write queries that can summarize data and answer some b
 ### MAX()
 
 applied on Numbers, String, and date
+
 ```sql
 SELECT MAX(invoice_total) as "Highest" FROM invoices;
 ```
@@ -550,6 +546,7 @@ SELECT SUM(invoice_total) as "Total" FROM invoices;
 ### COUNT()
 
 only perform on `Non-Null` values.
+
 ```sql
 SELECT SUM(invoice_total) as "Total" FROM invoices;
 
@@ -561,12 +558,12 @@ SELECT SUM(invoice_total) as "Total" FROM invoices;
 The `GROUP BY` statement groups rows that have the same values into summary rows, like "find the number of customers in each country".
 
 ```sql
-SELECT COUNT(CustomerID), Country  
-FROM Customers  
+SELECT COUNT(CustomerID), Country
+FROM Customers
 GROUP BY Country;
 ```
 
-## Having 
+## Having
 
 The `HAVING` clause is used in conjunction with the `GROUP BY` clause to filter the results of a query based on the aggregated values. It allows you to specify a condition that filters the grouped rows returned by a `GROUP BY` query.
 
@@ -592,11 +589,11 @@ GROUP BY state, city WITH ROLLUP
 
 ## ALL keyword
 
-Used to return all values that meet the condition, the normal select will return a single value, but with this approach, we will get a list of results that met  `_condition_`
+Used to return all values that meet the condition, the normal select will return a single value, but with this approach, we will get a list of results that met `_condition_`
 
 ```sql
-SELECT _column_name(s)_  
-FROM _table_name_  
+SELECT _column_name(s)_
+FROM _table_name_
 WHERE _column_name operator_ ALL (
 			SELECT _column_name_  
 			FROM _table_name_
@@ -604,13 +601,12 @@ WHERE _column_name operator_ ALL (
 );
 ```
 
-
 ## ANY keyword
 
 `ANY` means that the condition will be true if the operation is true for any of the values in the range. It's equal to using the `IN` operator.
 
 ```sql
-SELECT * 
+SELECT *
 FROM clients
 WHERE client_id ANY (
 	SELECT client_id
@@ -620,8 +616,7 @@ WHERE client_id ANY (
 )
 ```
 
-
-## Correlated Subqueries
+## Correlated Sub queries
 
 ```sql
 SELECT *
@@ -633,15 +628,14 @@ WHERE inv.invoice_total > (
 )
 ```
 
-
 ## EXISTS operator
 
-The `EXISTS` operator is used to test for the existence of any record in a subquery.
+The `EXISTS` operator is used to test for the existence of any record in a sub-query.
 this operator is better than using the `IN` operator because the `IN` operator will return a list and then examine the condition, but `EXISTS` will return true to the condition and then return the row that matches the condition.
 
 ```sql
-SELECT SupplierName  
-FROM Suppliers  
+SELECT SupplierName
+FROM Suppliers
 WHERE EXISTS (
 	SELECT ProductName
 	FROM Products
@@ -649,8 +643,7 @@ WHERE EXISTS (
 		   AND Price < 20);
 ```
 
-
-## Subqueries in select clause
+## Sub queries in select clause
 
 ```sql
 SELECT
@@ -669,8 +662,7 @@ SELECT
 FROM clients c;
 ```
 
-
-## Subqueries in from clause
+## Sub queries in from clause
 
 With this, we can deal with the result table as a database table so we can perform select, aggregation functions, joins, and anything else.
 
@@ -696,7 +688,6 @@ FROM (
 
 ---
 
-
 # Essential MySQL Functions
 
 ## Numeric functions
@@ -712,9 +703,9 @@ SELECT CEILING(5.7) -- 6
 SELECT FLOOR(5.2) -- 5
 
 -- Remove the rest of the number
-SELECT TRUNCATE(5.12345, 2) -- 5.12 and 
+SELECT TRUNCATE(5.12345, 2) -- 5.12 and
 
-SELECT ABS(-5.2) -- 5.2 retyrns the positive value
+SELECT ABS(-5.2) -- 5.2 returns the positive value
 
 SELECT RAND() -- returns a random function between 0 and 1.
 ```
@@ -729,7 +720,7 @@ SELECT UPPER("hello") -- return HELLO
 SELECT LOWER("HELLO") -- return hello
 
 
--- Remove any whitespaces before or after the word
+-- Remove any whitespace before or after the word
 SELECT LTRIM("  HELLO") -- "HELLO"
 SELECT RTRIM("HELLO  ") -- "HELLO"
 SELECT TRIN (" HELLO  ") -- "HELLO"
@@ -767,9 +758,9 @@ SELECT CONCAT("HI, ", "HOSSAM")
 SELECT NOW(), CURDATE(), CURTIME()
 ```
 
-| NOW() | CURDATE() | CURTIME() |
-|---|---|---|
-|2023-12-18 10:40:15|2023-12-18|10:40:15|
+| NOW()               | CURDATE()  | CURTIME() |
+| ------------------- | ---------- | --------- |
+| 2023-12-18 10:40:15 | 2023-12-18 | 10:40:15  |
 
 ```sql
 SELECT YEAR(NOW())-- 2023
@@ -813,7 +804,7 @@ SELECT COALESCE(NULL, NULL, NULL, 'W3Schools.com', NULL, 'Example.com');
 ## IF function
 
 ```sql
-SELECT 
+SELECT
 	product_id,
     name,
     COUNT(*) AS orders,
@@ -824,11 +815,10 @@ JOIN order_items USING(product_id)
 GROUP BY product_id, name
 ```
 
-
 ## CASE operator
 
 ```sql
-SELECT 
+SELECT
 	CONCAT(first_name, ' ', last_name),
     points,
     CASE
@@ -844,12 +834,13 @@ FROM customers
 # Views
 
 view is a virtual table based on the result set of an SQL statement.
+
 ## Create View
 
 ```sql
 CREATE VIEW view_name AS
 -- your script starts here
-SELECT 
+SELECT
 	name,
 	phone,
 	email
@@ -862,7 +853,7 @@ after creating a view we can deal with it as a table in the database. Views don'
 
 ```sql
 -- replace view if exist
-CREATE OR REPLACE VIEW slaes_by_client AS
+CREATE OR REPLACE VIEW sales_by_client AS
 SELECT
 	c.client_id,
 	s.name,
@@ -882,32 +873,32 @@ SET due_date = DATE_ADD(due_date, INTERVAL 2 DAY)
 WHERE invoice_id = 1
 ```
 
-
 ## WITH OPTION CHECK
 
-The `WITH CHECK OPTION` clause can be given for an updatable view to prevent inserts to rows for which the `WHERE` clause in the _`select_statement`_ is not true. It also prevents updates to rows for which the `WHERE` clause is true but the update would cause it to be not true (in other words, it prevents visible rows from being updated to nonvisible rows).
+The `WITH CHECK OPTION` clause can be given for an updatable view to prevent inserts to rows for which the `WHERE` clause in the *`select_statement`* is not true. It also prevents updates to rows for which the `WHERE` clause is true but the update would cause it to be not true (in other words, it prevents visible rows from being updated to nonvisible rows).
 
 ```sql
 CREATE TABLE t1 (a INT);
 CREATE VIEW v1 AS SELECT * FROM t1 WHERE a < 2
 WITH CHECK OPTION;
 CREATE VIEW v2 AS SELECT * FROM v1 WHERE a > 0
-WITH LOCAL CHECK OPTION; 
-CREATE VIEW v3 AS SELECT * FROM v1 WHERE a > 0 
+WITH LOCAL CHECK OPTION;
+CREATE VIEW v3 AS SELECT * FROM v1 WHERE a > 0
 WITH CASCADED CHECK OPTION;
 ```
 
-## Views Benefits 
+## Views Benefits
 
 - Simplify queries
 - Adding an abstraction layer that reduces the impact of changes
+
 ```
 here we create a table once and apply all changes to a view to map these changes.
 ```
+
 - restrict access to data.
 
 ---
-
 
 # Stored Procedures (SP)
 
@@ -931,6 +922,7 @@ CALL get_clients()
 ```
 
 ## DROP the stored procedure
+
 ```sql
 DROP PROCEDURE IF EXISTS get_payments;
 ```
@@ -960,13 +952,12 @@ BEGIN
 	IF state IS NULL THEN
 		SET state = 'CA'; -- set the value you want
 	END IF;
-	
+
 	SELECT * FROM clients c
 	WHERE c.state = statue;
 END $$
 DELIMITER ;
 ```
-
 
 ## Validating SP parameters
 
@@ -983,16 +974,14 @@ BEGIN
 		SIGNAL SQLSTATE '22003'
 		SET MESSAGE_TEXT = "Invalid payment amount";
 	END IF;
-	
+
 	-- your update code goes here
 
 END $$
 DELIMITER ;
 ```
 
-
 ## Variables
-
 
 ```sql
 -- user/session variables
@@ -1002,7 +991,7 @@ SET @name = "Root";
 ```sql
 -- local vars: any var that is defined inside a function or stored procedure
 -- if we didn't assign 0 it'll be NULL
-DECLARE VAR_NAME TYPE DEFAULT 0 
+DECLARE VAR_NAME TYPE DEFAULT 0
 ```
 
 to copy the value from select to your local variables we use the `INTO` keyword.
@@ -1048,7 +1037,7 @@ BEGIN
 END
 ```
 
-  In SQL, a deterministic function is a function whose output is entirely determined by its input parameters
+In SQL, a deterministic function is a function whose output is entirely determined by its input parameters
 
 ```sql
 CREATE FUNCTION get_risk_factor_for_client(
@@ -1077,6 +1066,7 @@ END
 # Triggers and Events
 
 ## Triggers
+
 a block of code gets executed after/before the (`insert`, `update`, `delete`) actions. the trigger can't be used on its table because it will trigger an infinite loop. We can use triggers for logging and auditing
 
 ```sql
@@ -1151,6 +1141,7 @@ ALTER EVENT event_name [DISABLE/ENABLE];
 # Transactions and Concurrency
 
 ## Transactions
+
 Transaction is a group of SQL statements that represent a single unit of work. All are completed successfully or all fail like bank transactions.
 
 ### COMMIT
@@ -1234,16 +1225,16 @@ A phantom read is a phenomenon that can occur in database transactions, particul
 
 Each problem has its isolation level to solve it.
 
-## Isolations
+## Isolation
 
 ### levels
 
-| Name | Prevented Issue | Note |
-|:--:|:--:|:--:|
-| READ UNCOMMITTED | - | - |
-| READ COMMITTED  | `Dirty Reads` | - |
-| REPEATABLE READ | `Lost Updates`, `Dirty Reads`, `NON-Repeating Reads` | MySQL Default Level |
-| SERIALIZABLE |  `Lost Updates`, `Dirty Reads`, `NON-Repeating Reads`, `Phantom Reads` | - |
+|       Name       |                            Prevented Issue                            |        Note         |
+| :--------------: | :-------------------------------------------------------------------: | :-----------------: |
+| READ UNCOMMITTED |                                   -                                   |          -          |
+|  READ COMMITTED  |                             `Dirty Reads`                             |          -          |
+| REPEATABLE READ  |         `Lost Updates`, `Dirty Reads`, `NON-Repeating Reads`          | MySQL Default Level |
+|   SERIALIZABLE   | `Lost Updates`, `Dirty Reads`, `NON-Repeating Reads`, `Phantom Reads` |          -          |
 
 The more isolation level the less performance we get.
 
@@ -1328,11 +1319,12 @@ COMMIT;
 
 it will fix all the concurrency issues above.
 
-##  Deadlock
+## Deadlock
 
 A deadlock in MySQL, as in other relational database systems, occurs when two or more transactions are blocked indefinitely, each waiting for the other to release a lock. In simpler terms, a deadlock is a situation where transactions are unable to proceed because each holds a lock that the other needs to continue.
 
 Deadlocks in Steps:
+
 1. **Transaction A acquires a lock on resource X.**
 2. **Transaction B acquires a lock on resource Y.**
 3. **Transaction A now tries to acquire a lock on resource Y (which Transaction B holds), and Transaction B tries to acquire a lock on resource X (which Transaction A holds).**
@@ -1366,14 +1358,14 @@ We can `avoid` the deadlocks not prevent them, To `avoid` deadlocks, consider th
 
 ## String type
 
-| Type | Size / Max Size | Potential Usage |
-| :--: | :--: | :--: |
-| CHAR(x) | Fixed-length | Country Code |
-| VARCHAR(x)| Max: 65535, characters (~64KB) - (50-255) good range | phone, usernames, passwords ...etc.|
-| MEDIUMTEXT | Max 16MB | JSON, CSV, medium size text books |
-| LONGTEXT | Max 4GB | Textbooks, and years of log files |
-| TINYTEXT | max 255 Byte | 255 chars |
-| TEXT | Max 64KB | 64K char | 
+|    Type    |                   Size / Max Size                    |           Potential Usage           |
+| :--------: | :--------------------------------------------------: | :---------------------------------: |
+|  CHAR(x)   |                     Fixed-length                     |            Country Code             |
+| VARCHAR(x) | Max: 65535, characters (~64KB) - (50-255) good range | phone, usernames, passwords ...etc. |
+| MEDIUMTEXT |                       Max 16MB                       |  JSON, CSV, medium size text books  |
+|  LONGTEXT  |                       Max 4GB                        |  Textbooks, and years of log files  |
+|  TINYTEXT  |                     max 255 Byte                     |              255 chars              |
+|    TEXT    |                       Max 64KB                       |              64K char               |
 
 English Language: `1 Byte`
 European (Middle-Eastern): `2 Bytes`
@@ -1381,16 +1373,17 @@ Asian: `3 Bytes`
 
 ## Integer type
 
-| Type | Size |
-| :--: | :--: |
-| TINTINT | 1 Bytes |
-| UNSIGNED TINTINT | - |
-| AMALLINT | 2 Bytes |
-| MEDIUMINT | 3 Bytes |
-| INT | 4 Bytes |
-| BIGINT | 8 Bytes |
+|       Type       |  Size   |
+| :--------------: | :-----: |
+|     TINTINT      | 1 Bytes |
+| UNSIGNED TINTINT |    -    |
+|     AMALLINT     | 2 Bytes |
+|    MEDIUMINT     | 3 Bytes |
+|       INT        | 4 Bytes |
+|      BIGINT      | 8 Bytes |
 
 Integer datatypes have a `Zero Fill` option which allows you to pad the unused part of the integer and set them to `zeros`. For example:
+
 ```sql
 -- Number 1 will appear like this.
 INT(4) --> 0001
@@ -1400,19 +1393,19 @@ INT(4) --> 0001
 
 ## Fixed/Floating Point type
 
-| Type | Size |
-| :--: | :--: |
-| DECIMAL (number_length, digits_after_precision)| - |
-| DEC | - |
-| NUMERIC | - |
-| FIXED | - |
-| FLOAT | 4B |
-| DOUBLE | 8B |
+|                      Type                       | Size |
+| :---------------------------------------------: | :--: |
+| DECIMAL (number_length, digits_after_precision) |  -   |
+|                       DEC                       |  -   |
+|                     NUMERIC                     |  -   |
+|                      FIXED                      |  -   |
+|                      FLOAT                      |  4B  |
+|                     DOUBLE                      |  8B  |
 
 ## Boolean type
 
-| Type | Possible values | 
-| :--: | :--: |
+|     Type     |  Possible values  |
+| :----------: | :---------------: |
 | BOOL/BOOLEAN | TRUE/FALSE or 1/0 |
 
 ## Enum and Set type
@@ -1437,13 +1430,13 @@ If the set of possible values is likely to change over time, it might be better 
 
 ## Date and Time type
 
-| Type | Size |
-| :--: | :--: |
-| DATE | - |
-| TIME | - |
-| DATETIME | 8B |
+|   Type    |      Size       |
+| :-------: | :-------------: |
+|   DATE    |        -        |
+|   TIME    |        -        |
+| DATETIME  |       8B        |
 | TIMESTAMP | 4B (up to 2038) |
-| YEAR |  |
+|   YEAR    |                 |
 
 If you'll store dates after the 2038 year it's better to use the `DATETIME` instead of `TIMESTAMP`. Read more about the year 2038 problem 😃.
 
@@ -1451,14 +1444,15 @@ If you'll store dates after the 2038 year it's better to use the `DATETIME` inst
 
 Used for storing binary data
 
-| Type | Size |
-| :---: | :---: |
-| TINYBLOB | 225B |
-| BLOB | 65KB |
+|    Type    | Size |
+| :--------: | :--: |
+|  TINYBLOB  | 225B |
+|    BLOB    | 65KB |
 | MEDIUMBLOB | 16MB |
-| LONGBLOB | 4GB |
+|  LONGBLOB  | 4GB  |
 
 it's not the best practice to store binary data in your database because this approach does the following:
+
 - Increase database size
 - Slow the backup process
 - Slow the performance
@@ -1476,7 +1470,7 @@ SET properties = '
 '
 WHERE product_id = 1;
 
--- or -- 
+-- or --
 
 UPDATE products
 SET properties = JSON_OBJECT(
@@ -1492,12 +1486,12 @@ All of these ways produce the following JSON object
 
 ```json
 {
-	"name": "root",
-	"password": "toor",
-	"numbers": [1, 2, 3],
-	"data": {
-		"name": "test"
-	}
+  "name": "root",
+  "password": "toor",
+  "numbers": [1, 2, 3],
+  "data": {
+    "name": "test"
+  }
 }
 ```
 
@@ -1512,7 +1506,7 @@ WHERE product_id = 1;
 
 -- OR --
 
--- $ for the current JSON docuemnt
+-- $ for the current JSON document
 -- . for accessing the passed key
 SELECT properties -> '$.name'       --> return "root"
 -- SELECT properties -> '$.numbers[0]' --> return 1
@@ -1567,6 +1561,7 @@ Skipped for now
 in this case, if we wanna search for customers with `state` it's faster than usual because indexes are stored in memory not on the desk. the select won't test all records it will search in the indexed state binary tree and get a reference to the row.
 
 **Cost of indexes**
+
 - Increase the size of the database because it's stored next to the table.
 - Slow down the write operation.
 
@@ -1625,7 +1620,6 @@ WHERE MATCH(title, body) AGAINST ("search value" IN BOOLEAN MODE);
 Using `-value` will return the records match the search value excluding the value that after `-`, And the word after `+` it will be included in the search result, `"value"`
 By surrounding the search value that means this value **must** be included in the result.
 
-
 ### Composite index
 
 ```sql
@@ -1633,6 +1627,7 @@ CREATE INDEX idx_state_points ON customers(state, points);
 ```
 
 the order of the columns **matter**. We have 2 rules to apply here:
+
 - Put the most frequently used columns first.
 - Put the column with the higher cardinality to narrow the search range.
 
@@ -1646,7 +1641,6 @@ USE INDEX(index_name)
 WHERE state LIKE 'search_criteria' AND
 	  last_name LIKE 'search_criteria';
 ```
-
 
 ## When indexes are ignored?
 
@@ -1676,11 +1670,10 @@ EXPLAIN
 
 ![Pasted image 20231220135419](https://github.com/0xGhazy/0xGhazy/assets/60070427/d7f17bb9-c5bc-455b-b45c-5c544a996275)
 
-
 **Example 2:**
 
 ```sql
-EXPLAIN 
+EXPLAIN
 	SELECT customer_id
 	FROM customers
 	WHERE points + 10 > 2010;
@@ -1692,7 +1685,7 @@ EXPLAIN
 this example will test the whole database records against the specified where clause but it's also a `full-index` scan. to solve this problem we can change the criteria in the where clause to `points > 2000` it'll give the same result but faster than the above code result.
 
 ```sql
-EXPLAIN 
+EXPLAIN
 	SELECT customer_id
 	FROM customers
 	WHERE points > 2000;
@@ -1705,6 +1698,7 @@ EXPLAIN
 If you have a composite index such as `INDEX(state, points)` you can perform sorting in the following rules:
 
 1. You can sort data based on `state` value
+
 ```sql
 SELECT customer_id
 FROM customers
@@ -1712,6 +1706,7 @@ ORDER BY state
 ```
 
 2. You can sort data based on `state`, and `points` values
+
 ```sql
 SELECT customer_id
 FROM customers
@@ -1719,6 +1714,7 @@ ORDER BY state, points
 ```
 
 3. You can sort data based on the reverse order of `both` columns
+
 ```sql
 SELECT customer_id
 FROM customers
@@ -1726,6 +1722,7 @@ ORDER BY state DESC, points DESC
 ```
 
 4. You can sort data based on the `points` only
+
 ```sql
 SELECT customer_id
 FROM customers
@@ -1744,6 +1741,7 @@ If you try to select something other than the `state`, `value`, and `customer_id
 **Before creating new indexes check the existing ones.**
 
 ---
+
 ## Securing Databases
 
 Skipped for now
