@@ -6,10 +6,9 @@ header:
 ribbon: ForestGreen
 description: "Singleton Design Pattern in a nutshell...."
 categories:
-  - Design Patterns
+  - Blog
 tags:
   - Design Patterns
-  - Software Engineering
 toc: false
 ---
 
@@ -22,6 +21,7 @@ This API will create a new instance every time it’s invoked, which is not a go
 here we can use one of the creational design patterns called Singleton design pattern, Let’s talk about it 😃.
 
 ### What is the design patterns?
+
 **Design patterns** are typical solutions to commonly occurring problems in software design. They are like pre-made blueprints that you can customize to solve a recurring design problem in your code.
 
 Our learning and use of design patterns, improve our view of problems and strengthens our skill in solving design-related software problems.
@@ -29,17 +29,20 @@ Our learning and use of design patterns, improve our view of problems and streng
 **Singleton** is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance.
 
 ### Singleton Pros
+
 Singleton design pattern solve two kind of problems:
 1- **Ensure that a class has just a single instance**. (we will see this in the Demo)
 2- **Provide a global access point to that instance**.
 
 ### Singleton Cons
+
 As always, nothing is perfect, Singleton has a problem with violating the principle of Single Responsibility, Because the class has two distinct responsibilities:
+
 - Making sure that only one instance can be created.
 - The core functionality of the class - accessing database for an example.
 
+### Python Demo
 
-### Python Demo 
 ```python
 class MainClass:
 
@@ -50,13 +53,15 @@ object2 = MainClass()
 object1 = MainClass()
 object3 = MainClass()
 ```
-The previous code i have a simple class called `MainClass` which have the `__init__()` method only for the explaining purposes. By running this code we get the following output. 
+
+The previous code i have a simple class called `MainClass` which have the `__init__()` method only for the explaining purposes. By running this code we get the following output.
 
 ![1](https://user-images.githubusercontent.com/60070427/195465122-61ad47e2-757b-4011-b1c6-66a6c1a7a82b.png)
 
 I think you guessed the output 99% true, we have a new instance every time we create a `MainClass` object.
 
 ### Solution
+
 Lets see who to overcome this problem with the Singleton implementation. First, how does Singleton work and be implemented?
 
 First we have the following steps to implement the Singleton:
@@ -65,25 +70,26 @@ First we have the following steps to implement the Singleton:
 3- Returning the new created instance.
 
 **Python Code:**
+
 ```python
-class Singelton(object):
+class Singleton(object):
 	# Flag variable to check if instance is created or not
     _instance = None
 
     def __new__(cls):
-	    # Check if we vave any Singelton instance in memory
+	    # Check if we have any Singleton instance in memory
         if cls._instance is None:
-            print('Creating the Singelton object')
-			# Creating an instance of the Singelton class
-            cls._instance = super(Singelton, cls).__new__(cls)
+            print('Creating the Singleton object')
+			# Creating an instance of the Singleton class
+            cls._instance = super(Singleton, cls).__new__(cls)
             # Put any initialization here.
             # Here we Overwrite the __init__ method
         # Return the new instance
         return cls._instance
 
-o1 = Singelton()
-o2 = Singelton()
-o3 = Singelton()
+o1 = Singleton()
+o2 = Singleton()
+o3 = Singleton()
 ```
 
 ![2](https://user-images.githubusercontent.com/60070427/195465119-27b95bea-4d3a-4c3d-b301-5a32bbf7c3f3.png)
@@ -92,8 +98,8 @@ As you can see in the previous output image, we have only one instance created e
 
 I hope you have benefited from this simple article, if you find this content useful, share it with your friends to spread the benefit among them. You For reading 💙.
 
-
 ## References
+
 - [Singleton - refactoring.guru](https://refactoring.guru/design-patterns/singleton)
 - [The Singleton Pattern](https://python-patterns.guide/gang-of-four/singleton/)
 - [Singleton Pattern Pitfalls - Vojtech Ruzicka's Programming Blog](https://www.vojtechruzicka.com/singleton-pattern-pitfalls/)

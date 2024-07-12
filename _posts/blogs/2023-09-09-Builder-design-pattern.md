@@ -6,10 +6,9 @@ header:
 ribbon: ForestGreen
 description: "Using Builder design pattern to build a response object for ResponseEntity"
 categories:
-  - Design Patterns
+  - Blog
 tags:
   - Design Patterns
-  - Software Engineering
 toc: false
 ---
 
@@ -45,7 +44,7 @@ public class Response {
 }
 ```
 
-in this approach, I have to provide the `makeResponse()` method with its parameters and it was accepted until I added the pagenation and other request parameters to get a bulk of records from the database. for this new feature I need to add some metadata -as I call it- about the total number of records remaining, the last page, what is the page size, and what is the total number of records.
+in this approach, I have to provide the `makeResponse()` method with its parameters and it was accepted until I added the pagination and other request parameters to get a bulk of records from the database. for this new feature I need to add some metadata -as I call it- about the total number of records remaining, the last page, what is the page size, and what is the total number of records.
 
 here I need to change the Response object to handle the newly needed parameters `metadata`. but for some other requests let me say the simple request such as Getting a record by ID there is no need to have metadata here. in other words, the metadata here or any future parameters may be optional to have in your response object.
 
@@ -65,7 +64,7 @@ here I'll introduce the builder design pattern. The Builder design pattern is a 
 
 - Reusable Builders: Once a builder is defined, it can be reused to create multiple instances of objects with similar configurations, saving development effort and promoting consistency.
 
-**Cons** 
+**Cons**
 
 - The overall complexity of the code increases since the pattern requires creating multiple new classes.
 
@@ -111,6 +110,7 @@ public class Response {
     }
 }
 ```
+
 data is an `Object` because we don't know its type, sometimes it will be one object, and sometimes will be a list of objects.
 
 Now let's implement the `ResponseBuilder` class inside the `Response` class. The idea here is to build the builder with the same properties as the `Response` class to achieve the mapping in the constructor `Response(ResponseBuilder responseBuilder)`.
@@ -133,7 +133,7 @@ The next step is to implement each property setter method. for example, I have t
 /* Code snippet */
     public ResponseBuilder status(HttpStatus status) {
         this._status = status;
-        return this; // retuurn 
+        return this;
     }
 /* Code snippet */
 ```
@@ -234,7 +234,7 @@ In the following example in the `getAllBooks` method I create a ResponseMetadata
         Page<Book> books = repository.findAll(pageable);
         List<Book> listOfBooks = books.getContent();
         List<BookDto> result = listOfBooks.stream().map(book -> mapToDto(book)).collect(Collectors.toList());
-    
+
         // Initialized the metadata
         ResponseMetadata metadata = new ResponseMetadata();
         metadata.setIsLast(books.isLast());
@@ -264,117 +264,119 @@ In the following example in the `getAllBooks` method I create a ResponseMetadata
 ```
 
 **Get bulk books (get all books) response**
+
 ```json
 {
-    "metadata": {
-        "pageNo": 0,
-        "pageSize": 100,
-        "totalRecords": 5,
-        "totalPages": 1,
-        "isLast": true
+  "metadata": {
+    "pageNo": 0,
+    "pageSize": 100,
+    "totalRecords": 5,
+    "totalPages": 1,
+    "isLast": true
+  },
+  "data": [
+    {
+      "id": 7,
+      "isbn": "123",
+      "title": "My first Book",
+      "publicationYear": 2023,
+      "price": 200.0,
+      "rating": 3.2,
+      "description": "Ay haga",
+      "edition": "1st",
+      "language": "en",
+      "publisher": "Flowtech House",
+      "numberOfPages": 350,
+      "dateAdded": "2023-09-10T00:00:00.000+00:00"
     },
-    "data": [
-        {
-            "id": 7,
-            "isbn": "123",
-            "title": "My first Book",
-            "publicationYear": 2023,
-            "price": 200.0,
-            "rating": 3.2,
-            "description": "Ay haga",
-            "edition": "1st",
-            "language": "en",
-            "publisher": "Flowtech House",
-            "numberOfPages": 350,
-            "dateAdded": "2023-09-10T00:00:00.000+00:00"
-        },
-        {
-            "id": 6,
-            "isbn": "56",
-            "title": "My first Book",
-            "publicationYear": 2023,
-            "price": 200.0,
-            "rating": 3.2,
-            "description": "Ay haga",
-            "edition": "1st",
-            "language": "en",
-            "publisher": "Flowtech House",
-            "numberOfPages": 350,
-            "dateAdded": "2023-09-10T00:00:00.000+00:00"
-        },
-        {
-            "id": 5,
-            "isbn": "78",
-            "title": "My first Book",
-            "publicationYear": 2023,
-            "price": 200.0,
-            "rating": 3.2,
-            "description": "Ay haga",
-            "edition": "1st",
-            "language": "en",
-            "publisher": "Flowtech House",
-            "numberOfPages": 350,
-            "dateAdded": "2023-09-10T00:00:00.000+00:00"
-        },
-        {
-            "id": 2,
-            "isbn": "987654321",
-            "title": "My first Book",
-            "publicationYear": 2026,
-            "price": 200.0,
-            "rating": 3.2,
-            "description": "Ay haga",
-            "edition": "1st",
-            "language": "en",
-            "publisher": "Flowtech House",
-            "numberOfPages": 350,
-            "dateAdded": "2023-09-10T00:00:00.000+00:00"
-        },
-        {
-            "id": 1,
-            "isbn": "753",
-            "title": "My first Book",
-            "publicationYear": 2023,
-            "price": 200.0,
-            "rating": 3.2,
-            "description": "Ay haga",
-            "edition": "1st",
-            "language": "en",
-            "publisher": "Flowtech House",
-            "numberOfPages": 350,
-            "dateAdded": "2023-09-10T00:00:00.000+00:00"
-        }
-    ],
-    "message": "books retrieved successfully",
-    "status": "OK"
+    {
+      "id": 6,
+      "isbn": "56",
+      "title": "My first Book",
+      "publicationYear": 2023,
+      "price": 200.0,
+      "rating": 3.2,
+      "description": "Ay haga",
+      "edition": "1st",
+      "language": "en",
+      "publisher": "Flowtech House",
+      "numberOfPages": 350,
+      "dateAdded": "2023-09-10T00:00:00.000+00:00"
+    },
+    {
+      "id": 5,
+      "isbn": "78",
+      "title": "My first Book",
+      "publicationYear": 2023,
+      "price": 200.0,
+      "rating": 3.2,
+      "description": "Ay haga",
+      "edition": "1st",
+      "language": "en",
+      "publisher": "Flowtech House",
+      "numberOfPages": 350,
+      "dateAdded": "2023-09-10T00:00:00.000+00:00"
+    },
+    {
+      "id": 2,
+      "isbn": "987654321",
+      "title": "My first Book",
+      "publicationYear": 2026,
+      "price": 200.0,
+      "rating": 3.2,
+      "description": "Ay haga",
+      "edition": "1st",
+      "language": "en",
+      "publisher": "Flowtech House",
+      "numberOfPages": 350,
+      "dateAdded": "2023-09-10T00:00:00.000+00:00"
+    },
+    {
+      "id": 1,
+      "isbn": "753",
+      "title": "My first Book",
+      "publicationYear": 2023,
+      "price": 200.0,
+      "rating": 3.2,
+      "description": "Ay haga",
+      "edition": "1st",
+      "language": "en",
+      "publisher": "Flowtech House",
+      "numberOfPages": 350,
+      "dateAdded": "2023-09-10T00:00:00.000+00:00"
+    }
+  ],
+  "message": "books retrieved successfully",
+  "status": "OK"
 }
 ```
 
 **Get record by id response**
+
 ```json
 {
-    "data": {
-        "id": 1,
-        "isbn": "753",
-        "title": "My first Book",
-        "publicationYear": 2023,
-        "price": 200.0,
-        "rating": 3.2,
-        "description": "Ay haga",
-        "edition": "1st",
-        "language": "en",
-        "publisher": "Flowtech House",
-        "numberOfPages": 350,
-        "dateAdded": "2023-09-10T00:00:00.000+00:00"
-    },
-    "message": "Book retrieved successfully",
-    "status": "FOUND"
+  "data": {
+    "id": 1,
+    "isbn": "753",
+    "title": "My first Book",
+    "publicationYear": 2023,
+    "price": 200.0,
+    "rating": 3.2,
+    "description": "Ay haga",
+    "edition": "1st",
+    "language": "en",
+    "publisher": "Flowtech House",
+    "numberOfPages": 350,
+    "dateAdded": "2023-09-10T00:00:00.000+00:00"
+  },
+  "message": "Book retrieved successfully",
+  "status": "FOUND"
 }
 ```
 
 hope this post helps you to understand the builder design pattern and how it works.
 
-
 references:
+
 - [Builder](https://refactoring.guru/design-patterns/builder)
 - [Design Patterns: 14- Builder [بالعربي]](https://www.youtube.com/watch?v=51Ap3s__P_Q&list=PLsV97AQt78NTrqUAZM562JbR3ljX19JFR&index=14&ab_channel=PassionateCoders%7C%D9%85%D8%AD%D9%85%D8%AF%D8%A7%D9%84%D9%85%D9%87%D8%AF%D9%8A)
