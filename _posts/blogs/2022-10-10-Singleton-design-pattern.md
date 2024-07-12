@@ -2,7 +2,7 @@
 title: "Singleton Design Pattern"
 classes: wide
 header:
-  teaser: /assets/images/Blogs/Design-Patterns/design-patterns.png
+  teaser: /assets/images/blogs/design-patterns.png
 ribbon: ForestGreen
 description: "Singleton Design Pattern in a nutshell...."
 categories:
