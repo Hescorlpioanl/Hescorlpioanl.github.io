@@ -12,6 +12,14 @@ tags:
 toc: false
 ---
 
+<br>
+<div align="center">
+
+بسم الله الرحمن الرحيم <br> احييكم بتحية الإسلام السلام عليكم ورحمة الله تعالى وبركاته
+
+</div>
+<br>
+
 Hi folks, hossam hamdy aka Ghazy is here :)
 in this write-up, I'll explain how I pwn the late machine on HTB. So let's start :)
 

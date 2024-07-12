@@ -12,6 +12,14 @@ tags:
 toc: false
 ---
 
+<br>
+<div align="center">
+
+بسم الله الرحمن الرحيم <br> احييكم بتحية الإسلام السلام عليكم ورحمة الله تعالى وبركاته
+
+</div>
+<br>
+
 Hi folks in this simple writeup I'll explain the steps that I followed to solve the Vulnversity machine on the TryHackMe, I hope you benefit from it and don't get bored of it, and if so, this is my first try bro 😥.
 
 before we start we need to check some requests to make sure we are able to connect to the TryHackMe network. I recommend that you pass the OpenVPN room to be able to connect to the private network on which the target machine is located.

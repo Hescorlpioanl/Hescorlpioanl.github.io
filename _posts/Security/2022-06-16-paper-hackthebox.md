@@ -12,6 +12,14 @@ tags:
 toc: true
 ---
 
+<br>
+<div align="center">
+
+بسم الله الرحمن الرحيم <br> احييكم بتحية الإسلام السلام عليكم ورحمة الله تعالى وبركاته
+
+</div>
+<br>
+
 Hi folks, Hossam aka 0xGhazy is here :)
 
 in this blog, I'll explain how to exploit [Paper](https://app.hackthebox.com/machines/Paper). It's an easy Linux machine. machine by [secnigma](https://app.hackthebox.com/users/92926) if you wanna watch my walkthrough rather than writeup you can check my Youtube video.

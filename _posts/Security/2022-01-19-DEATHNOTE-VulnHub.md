@@ -12,6 +12,14 @@ tags:
 toc: true
 ---
 
+<br>
+<div align="center">
+
+بسم الله الرحمن الرحيم <br> احييكم بتحية الإسلام السلام عليكم ورحمة الله تعالى وبركاته
+
+</div>
+<br>
+
 Hi folks. Hossam Hamdy aka 0xGhazy is here, Today I'll explain how I PWN DeathNote machine from VulnHub
 
 # [#] About the machine

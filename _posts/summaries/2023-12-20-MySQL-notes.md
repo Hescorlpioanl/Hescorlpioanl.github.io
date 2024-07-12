@@ -20,6 +20,7 @@ toc_sticky: true
 
 </div>
 <br>
+
 # Introduction
 
 Hello world, Hossam is here. Welcome everyone to my humble blog. In this post, I will write down all the MYSQL syntax that I encountered while studying MYSQL or through my solutions on the HackerRank website and LeetCode. I simply consider this publication to be my notes that make it easier for me to quickly review SQL syntax, which helps me prepare for job interviews, in addition to being a good opportunity to share information with others.

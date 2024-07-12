@@ -12,6 +12,14 @@ tags:
 toc: false
 ---
 
+<br>
+<div align="center">
+
+بسم الله الرحمن الرحيم <br> احييكم بتحية الإسلام السلام عليكم ورحمة الله تعالى وبركاته
+
+</div>
+<br>
+
 Hello world, Hossam is here, welcome to my first blog in the Graduation Project Diary series, in this blog I try to explain and discuss new things that I have learned during the final year @ BFCAI ❤️.
 
 3/10/2022 at 3:51 AM is the time I start to write this post, I start writing about Git and GitHub. why this topic? because the team needs to collaborate together during working on the project development, review each other’s tasks, create teams and assign tasks, track issues, and a lot of other useful features that improve productivity and quality. Get a cup of coffee, relax and let’s get started.

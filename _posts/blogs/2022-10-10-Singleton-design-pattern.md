@@ -12,6 +12,14 @@ tags:
 toc: false
 ---
 
+<br>
+<div align="center">
+
+بسم الله الرحمن الرحيم <br> احييكم بتحية الإسلام السلام عليكم ورحمة الله تعالى وبركاته
+
+</div>
+<br>
+
 Hello world, Hossam is here, welcome to my first blog in the Graduation Project Diary series, in this blog I try to explain and discuss new things that I have learned during the final year @ BFCAI ❤️.
 
 I write this post on 10/10/2022 at 12:40 AM, in this post I’ll talk about one problem that I face during writing some code in the project, The problem is that I was working on a Database API which is a python module that connect to the database and provide me with a formal interface to interact with the project database, it’s an approach that I’m using for a while, Example of this API you can see [0xGhazy/PyPass.](https://github.com/0xGhazy/PyPass)

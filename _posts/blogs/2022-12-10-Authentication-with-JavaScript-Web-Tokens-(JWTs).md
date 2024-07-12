@@ -14,6 +14,14 @@ tags:
 toc: false
 ---
 
+<br>
+<div align="center">
+
+بسم الله الرحمن الرحيم <br> احييكم بتحية الإسلام السلام عليكم ورحمة الله تعالى وبركاته
+
+</div>
+<br>
+
 Hello world, Hossam is here, welcome to my 4th blog in the Graduation Project Diary series, in this blog I try to explain and discuss new things that I have learned during the final year @ BFCAI ❤️.
 
 By the end of this post you will be able to tell the deference between the `Authentication` and `Authorization`, and what is the JWT, Why we need it, How does it work, and How we can use it protect APIs resources or endpoints.

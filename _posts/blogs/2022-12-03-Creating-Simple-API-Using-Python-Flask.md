@@ -13,6 +13,14 @@ tags:
 toc: false
 ---
 
+<br>
+<div align="center">
+
+بسم الله الرحمن الرحيم <br> احييكم بتحية الإسلام السلام عليكم ورحمة الله تعالى وبركاته
+
+</div>
+<br>
+
 Hello world, Hossam is here, welcome to my 3rd blog in the Graduation Project Diary series, in this blog I try to explain and discuss new things that I have learned during the final year @ BFCAI ❤️. In this post I'll try to explain how to implement Python Flask API for my project teammates to be aware of this topic and do their tasks 😃
 
 # Introduction

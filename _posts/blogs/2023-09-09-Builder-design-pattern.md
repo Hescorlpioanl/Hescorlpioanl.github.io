@@ -12,8 +12,13 @@ tags:
 toc: false
 ---
 
-السلام عليكم ورحمة الله وبركاته
+<br>
+<div align="center">
 
+بسم الله الرحمن الرحيم <br> احييكم بتحية الإسلام السلام عليكم ورحمة الله تعالى وبركاته
+
+</div>
+<br>
 ## Introduction
 
 Hello world, hossam is here again, in this post i'll show you how i used the builder design pattern to build a response object for ResponseEntity yo use it in my spring boot application and how this object helps me to write readable and organized code.

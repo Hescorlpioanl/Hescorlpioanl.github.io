@@ -11,6 +11,14 @@ tags:
   - logs
 ---
 
+<br>
+<div align="center">
+
+بسم الله الرحمن الرحيم <br> احييكم بتحية الإسلام السلام عليكم ورحمة الله تعالى وبركاته
+
+</div>
+<br>
+
 Hi, I'm Hossam Hamdy, and it's my first time writing this kind of post. I was inspired to write this type by a publication by engineer [Medhat Dawoud](https://twitter.com/med7atdawoud) on his blog, [link](https://www.medhat.dev/blog/actually-it -was-a-great-year-2020-recap/). I found this type of post very inspiring for me, as it can motivate other to write, as happened to me. Or it will be a documentation of the moments and situations that I experienced during my experiences, to benefit from the lessons, remember what I learned, and follow my personal and technical development.
 
 ## Writing technical posts
