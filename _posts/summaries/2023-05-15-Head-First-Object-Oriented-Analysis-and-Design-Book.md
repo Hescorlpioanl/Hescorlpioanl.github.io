@@ -1,6 +1,24 @@
+---
+title: "Head First Object-Oriented Analysis & Design Summary"
+classes: wide
+header:
+  teaser: /assets/images/summaries/head_first_object_oriented_analysis_and_design.jpg
+ribbon: ForestGreen
+description: "Head First Object-Oriented Analysis & Design book summary"
+categories:
+  - Summaries
+tags:
+  - OOA&D
+toc: true
+---
+
+<br>
 <div align="center">
+
 بسم الله الرحمن الرحيم <br> احييكم بتحية الإسلام السلام عليكم ورحمة الله تعالى وبركاته
+
 </div>
+<br>
 
 # Chapter 1: Great Software Begins Here
 
