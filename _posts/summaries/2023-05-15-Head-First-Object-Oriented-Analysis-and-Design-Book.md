@@ -1,24 +1,6 @@
----
-title: "Head First Object-Oriented Analysis & Design Summary"
-classes: wide
-header:
-  teaser: /assets/images/summaries/head_first_object_oriented_analysis_and_design.jpg
-ribbon: ForestGreen
-description: "Head First Object-Oriented Analysis & Design book summary"
-categories:
-  - Summaries
-tags:
-  - OOA&D
-toc: true
----
-
-<br>
 <div align="center">
-
 بسم الله الرحمن الرحيم <br> احييكم بتحية الإسلام السلام عليكم ورحمة الله تعالى وبركاته
-
 </div>
-<br>
 
 # Chapter 1: Great Software Begins Here
 
@@ -285,39 +267,42 @@ With this approach we have a good design because in the future if we wanna add a
 
 # Chapter 02: Gathering Requirements
 
-In this chapter the authors will introduce a simple approach to help you to gather customer requirements with detailed use cases.
-Let’s answer the questions of What is the requirement?
 _Requirement_ is a specific thing your system has to do to work correctly. It's about what a particular service should do.
 
-### Listen to the customer
+## Listen to the customer
 
-To gather requirements, we need to listen to the customer carefully and pay attention to everything he says about the system wanna have/ or feature wanna add. In listening phase, we care about **what system has to do? ** not **How we'll implement this? **
+To gather requirements, we need to listen to the customer carefully and pay attention to everything he says about the system wanna have or feature wanna add. In listening phase, we care about **what system has to do?** not **How we'll implement this?**
 
-Focusing on implementation details in this phase is a big mistake that i unfortunately do in meetings. This makes me drop some necessary details in requirements and start thinking about the limitations of used technologies or on the other side start saying "yes it's easy we can implement and deliver this method/feature in 3 hours" but it's not true at all 😩.
+Focusing on implementation details in this phase is a big mistake that I unfortunately do in meetings. This makes me drop some necessary details in requirements and start thinking about the limitations of used technologies or on the other side start saying "yes it's easy I can implement it and deliver this `feature` in 3 hours" but it's not true at all 😩.
 
-### Create Requirements List
+## Create Requirements List
 
-After we listen to the customer requirements, we need to create a list of them as the image below.
+After we listen to the customer requirements, we need to create a list of them as the following.
+
+1. The dog door opening must be at least 12” tall.
+2. A button on the remote control opens the dog door
+   1. if the door is closed, and closes the dog door if the door is open.
+3. Once the dog door has opened, it should close automatically if the door isn’t already closed.
 
 After creating the list, we validate requirements with the customer to make sure that we are all on the same level of understanding of what the system has to do. We can get approval in the best case, and also, we get some comments on the requirements list as a change needed.
 
 Be aware that the happy case doesn't always happen in our real world, so our requirements might have an _alternative paths_ that handle the situation when things going wrong and unexpected.
 
-the _Use case_ idiom describes what your system does to accomplish a particular customer goal. it provides one or more scenarios that convey how the system should interact with the end-user or another system to achieve a goal.
+The _Use case_ idiom describes _what your system does to accomplish a particular customer goal._ it provides one or more scenarios that convey how the system should interact with the end-user or another system to achieve a goal.
 
 **One great use case is consists of 3 parts:**
 
-|           Part           |                                                    Description                                                     |
-| :----------------------: | :----------------------------------------------------------------------------------------------------------------: |
-|       Clear value        |        The use case must have a clear value to our system, if it’s not then the use case isn't of much use         |
+| Part                     | Description                                                                                                        |
+| :----------------------- | :----------------------------------------------------------------------------------------------------------------- |
+| Clear value              | The use case must have a clear value to our system, if it’s not then the use case isn't of much use                |
 | Start and Stop Condition | Each use case mush have a defined starting and ending conditions. when to start and when the process must be ended |
-|    External Initiator    |                           Each use case is started by external actor outside the system                            |
+| External Initiator       | Each use case is started by external actor outside the system                                                      |
 
 The use case must be written in a clear language to be understandable for your customers, managers, and developers’ team. so that the use case doesn't have technical details.
 
 You might think writing use cases is a waste of time and effort, but it's not what you think. Writing use cases helps you to figure out the edge cases and alternative paths that happens when things go wrong. By thinking about coding without take care of well written use cases we just think about happy scenarios only, the use case helps us to be aware of what we might face in the future. Remember that the first step of writing a great software is having satisfied customers.
 
-### Check requirements against use cases
+## Check requirements against use cases
 
 The last step is to check requirements against use cases, this helps us in validate the requirements and have the green light to start coding 🙂. here we make sure that all gathered requirements are covering all system aspects and functionalities.
 
@@ -337,41 +322,41 @@ Any time we do changes to our use cases the requirements change too, so after an
 
 # Chapter 04: Analysis
 
-### Analysis
+## Analysis
 
 it is about figuring out potential problems, and then solving problems before you release your application out into the real world.
 
-Analysis and your use cases let you show customers, managers, and other developers how your system works in a real world context not just in your controlled environment -happy scenario-.
+Analysis and your use cases let you show customers, managers, and other developers how your system works in a real world context not just in your controlled environment -**happy scenario**-.
 
 **Delegation** shields your objects from implementation changes to other objects in your software. it protect our code from changes due to changes happening to other objects.
 
 **Textual analysis** is about looking at _`nouns`_ in your use case to figure out _`potential classes`_, and _`methods`_.
 
-Maybe You didn't use cases and still create good software, but it's good to use them to satisfy your customers more often. and it's good to make sure your software does what it's supposed to do.
+Maybe You didn't use use cases and still create good software, but it's good to use them to satisfy your customers more often. and it's good to make sure your software does what it's supposed to do.
 
 Pay attention to the nouns in your use case, even when they aren’t classes in your system, because textual analysis helps us with what to focus on, not just what classes you need. in some cases you will found nouns in your use case but it's not really needed to be a class in your system. such as in the following example:
 
 ![](https://github.com/0xGhazy/0xGhazy/assets/60070427/cba12cf2-a91f-4158-a2b8-f12d100be83c)
 
-in this example we didn't need to create a `Dog` class because we don't need to track the dog we just need its bark sound, or it's not making sense to store the dog in the dog door -_at least for me :)_-, and finally the dog is an external factor from our system.
+In this example we didn't need to create a `Dog` class because we don't need to track the dog we just need its bark sound, or it's not making sense to store the dog in the dog door -_at least for me :)_-, and finally the dog is an external factor from our system.
 
 Pay attention to verbs in your use case, it's usually the methods of the class in your system.
 
-### Class diagram
+## Class diagram
 
 ![](https://github.com/0xGhazy/0xGhazy/assets/60070427/a9741a47-72c6-47cb-808b-73763f682457)
 
 The class diagram contains some information about relationships between classes and inner components such as data members and methods.
 
-from the image above we can see that:
+From the image above we can see that:
 
-- solid lines from one class to another are called "association" it means that one class is associated with another class by reference, extension, inheritance, etc.
-- on that solid line we write the name of the attribute where the association takes place.
-- the number at the end of the line is the number of attributes, if it's 1 it's called `multiplicity`, otherwise it's called `unlimited` and it's denoted by `*`.
+- Solid lines from one class to another are called "association" it means that one class is associated with another class by reference, extension, inheritance, etc.
+- On that solid line we write the name of the attribute where the association takes place.
+- The number at the end of the line is the number of attributes, if it's 1 it's called `multiplicity`, otherwise it's called `unlimited` and it's denoted by `*`.
 
-class diagrams aren't everything because it has limited _type_ information we don't know the data structure that uses them if we have iterable objects is it List, ArrayList, Vector, or custom objects. Class diagrams also don't tell us about how to code our methods, it's only give us a 10,000-foot view of our system as what authors mention on page 187.
+Class diagrams aren't everything because it has limited _type_ information we don't know the data structure that uses them if we have iterable objects is it List, ArrayList, Vector, or custom objects. Class diagrams also don't tell us about how to code our methods, it's only give us a 10,000-foot view of our system as what authors mention on page 187.
 
-at the end of this chapter remember that **rewriting code takes a lot more time than rewriting a use case or redrawing a class diagram**
+At the end of this chapter remember that **rewriting code takes a lot more time than rewriting a use case or redrawing a class diagram**
 
 ---
 
@@ -381,21 +366,21 @@ In this chapter authors will revisit the change concept that as we mentioned abo
 
 ## Part 1: Nothing Ever Stays the Same
 
-this part of Chapter 5 starts with "The harder you make it for your software to change, the more difficult it’s going to be to respond to your customer’s changing needs.". this part focuses on the change concept and how we can make it achievable by using some OOP techniques.
+This part of Chapter 5 starts with "The harder you make it for your software to change, the more difficult it’s going to be to respond to your customer’s changing needs.". This part focuses on the change concept and how we can make it achievable by using some OOP techniques.
 
 `Abstract classes` are placeholders for actual implementation classes. we use these classes to define common behaviors that are needed in the classes that will extend the abstract class.
 
-we can't create abstract class instances so we use them in general objects such as in the mentioned example in the book on page 200.
+We can't create abstract class instances so we use them in general objects such as in the mentioned example in the book on page 200.
 
-![1](https://github.com/0xGhazy/0xGhazy/assets/60070427/6e1a106f-0137-4bbe-b60f-ed9bdca222ea)
+![1123](https://github.com/0xGhazy/0xGhazy/assets/60070427/6e1a106f-0137-4bbe-b60f-ed9bdca222ea)
 
-in this example we don't have an `Instrument` object in the real world it's just a placeholder for any kind of musical Instrument that we may need to add in the future.
+In this example we don't have an `Instrument` object in the real world it's just a placeholder for any kind of musical Instrument that we may need to add in the future.
 
 _Whenever you find common behavior in two or more places, look to abstract that behavior into a class, and then reuse that behavior in the common classes_
 
-abstract classes in the class diagram are denoted as _ClassName_ in italics.
+Abstract classes in the class diagram are denoted as _ClassName_ in italics.
 
-aggregation relationship means that one thing is made up of another thing. In this case, an object adds another object, such as a parent object.
+Aggregation relationship means that one thing is made up of another thing. In this case, an object adds another object, such as a parent object.
 
 One of the best ways to see if the software is well-designed is to try and CHANGE it. trying to change your software will prove that your software is good or not based on the ability to change easily.
 
@@ -410,7 +395,7 @@ When you run into a choice like this, you should always favor coding to the inte
 By coding to an interface, your code will work with all of the interface’s subclasses even ones that haven’t been created yet. Instead of your code being able to work with only one specific subclass like `BaseballPlayer` you’re able to work with the more generic `Athlete`. That means that your code will work with any subclass of `Athlete`, like `HockeyPlayer` or `TennisPlayer`, and even subclasses that haven’t even been designed yet 🙂.
 
 `Encapsulation` protect your classes from unnecessary changes.
-_Anytime you have behavior in an application that you think is likely to change, you want to move that behavior away from parts of your application that probably won’t change very frequently. In other words, you should always try to encapsulate what varies._ Page 226.
+_Anytime you have behavior in an application that you think is likely to change, you want to move that behavior away from parts of your application that probably won’t change very frequently. In other words, you should always try to encapsulate what varies._
 
 Another thing to make your classes easy to change and not dependent is to have one reason to change, to achieve that you need to make your class do only one thing and do it well.
 
@@ -436,22 +421,22 @@ You’ll remove lots of methods from your classes, and avoid having to change yo
 
 here we can use `Map<?>` instead of adding properties data members to the `InstrumentSpec` class.
 
-the design will be like this:
+The design will be like this:
 ![p2](https://github.com/0xGhazy/0xGhazy/assets/60070427/4a2188af-230e-4b8f-b01a-ae1bf3b5e366)
 
-we can access the properties from the class:
+We can access the properties from the class:
 
 ```java
-instrument.getSpec().getProperty(“builder”);
+instrument.getSpec().getProperty("builder");
 ```
 
 _Most good designs come from analysis of bad designs. Never be afraid to make mistakes and then change things around._
 
-Now, we ned to know about cohesion and cohesive class.
+Now, we need to know about cohesion and cohesive class.
 
-`cohesive class` _A cohesive class does one thing really well and does not try to do or be something else._ Page 269.
+`cohesive class` _A cohesive class does one thing really well and does not try to do or be something else._
 
-`Cohesion` _measures the degree of connectivity among the elements of a single module, class, or object. The higher the cohesion of your software is, the more well-defined and related the responsibilities of each individual class in your application. Each class has a very specific set of closely related actions it performs._ Page 269.
+`Cohesion` _Measures the degree of connectivity among the elements of a single module, class, or object. The higher the cohesion of your software is, the more well-defined and related the responsibilities of each individual class in your application. Each class has a very specific set of closely related actions it performs._
 
 It's about how closely related the functionality of a class is in an application, module, or object. cohesion adds reusability and is easy to change.
 
@@ -459,9 +444,9 @@ It's about how closely related the functionality of a class is in an application
 
 At the end of this chapter, I would like to end it with the part I liked the most in the chapter, which is the question of **when is the design good enough and stop developing and improving?**
 
-_Sometimes you just have to stop designing because you run out of time... or money... and sometimes you just have to recognize you’ve done a good enough job to move on. Spending hours trying to write “`perfect software`” is a waste of time; spending lots of time writing great software and then moving on, is sure to win you more work, big promotions, and loads of cash and accolades_ Page 274.
+_Sometimes you just have to stop designing because you run out of time... or money... and sometimes you just have to recognize you’ve done a good enough job to move on. Spending hours trying to write “`perfect software`” is a waste of time; spending lots of time writing great software and then moving on, is sure to win you more work, big promotions, and loads of cash and accolades_.
 
-it's hard to know when to stop, but we can say in general if our software does what it is supposed to do, it has a flexible and cohesive design, and customers are happy with it. we will be ready to move on to a new project.
+It's hard to know when to stop, but we can say in general if our software does what it is supposed to do, it has a flexible and cohesive design, and customers are happy with it. we will be ready to move on to a new project.
 
 ---
 
@@ -493,7 +478,7 @@ Don’t forget who your customer really is, This is great advice at least for me
 
 A design pattern is just a way to design the solution for a particular type of problem. So design patterns don’t go directly into your code, they first go into your BRAIN. we study them and learn how they were implemented and when to use them and when we can't use them, because each design pattern has its own trade-offs.
 
-Our chapter is done now, I would like to document this moment right now. I was writing these chapter notes while I'm in the local cafeteria beside the Nile River and I asked for a coffee it was so bad but it cost 10 LE so it's fair 😁. See you in the next chapters.
+Our chapter is done here, I would like to document this moment right now. I was writing these chapter notes while I'm in the local cafeteria beside the Nile River and I asked for a coffee it was so bad but it cost 10 LE so it's fair 😁. See you in the next chapters.
 
 ---
 
@@ -505,14 +490,12 @@ Architecture takes a big chaotic mess...and helps us turn it into a well-ordered
 
 To determine which feature is the most important, Ask yourself the following 3 questions:
 
-1. Is it part of the essence of the system?
-   if you can't imagine your system without this feature then it's a core part of your system.
-
-2. What does it mean?
-   if you don't really know what the description means, then it's probably pretty important to give some attention to this feature, anytime you think this part will take a lot of time or will create problems, start with it now rather than late.
-
-3. How do I do it?
-   features that seem to be really hard to implement, or a totally new programming task for you, you better spend some time searching how it will be implemented, to not create lots of problems down the road.
+1. **Is it part of the essence of the system?**
+   If you can't imagine your system without this feature then it's a core part of your system.
+2. **What does it mean?**
+   If you don't really know what the description means, then it's probably pretty important to give some attention to this feature, anytime you think this part will take a lot of time or will create problems, start with it now rather than late.
+3. **How do I do it?**
+   Features that seem to be really hard to implement, or a totally new programming task for you, you better spend some time searching how it will be implemented, to not create lots of problems down the road.
 
 The essence of a system is what that system is at its most basic level. Once you determine what are the most important parts to start with, you can start with any one of them. The point here is to reduce the risk so that we start with key features first.
 
@@ -520,9 +503,9 @@ Focus on one feature at a time to reduce risk in your project. Don’t get distr
 
 Build on what you’ve already got done whenever possible. After finishing one feature picks the next one which depends on what you just finished before, this is good for your progress.
 
-the more your design is good, the more risk will be reduced.
+The more your design is good, the more risk will be reduced.
 
-Sometimes the best way to write great code is to hold off on writing code as long as you can. thinking and reevaluating your design is most important and helps you to write great code.
+Sometimes the best way to write great code is to hold off on writing code as long as you can. Thinking and reevaluating your design is most important and helps you to write great code.
 
 Customers don’t pay you for great code, they pay you for great software 😃.
 
@@ -530,19 +513,19 @@ Customers don’t pay you for great code, they pay you for great software 😃.
 
 # Chapter 8: Design Principles
 
-In this chapter, the authors introduce a bunch of OO design principles, using proven OO Design principles results in more maintainable, flexible, and extensible software.
+In this chapter, the authors introduce a bunch of OO design principles, using proven OO Design results in more maintainable, flexible, and extensible software.
 
 ## Open-Closed principle (OCP)
 
-in this principle your code must be closed for modification and open for extension.
+In this principle your code must be closed for modification and open for extension.
 
 ![image](https://github.com/0xGhazy/0xGhazy/assets/60070427/20ab9521-61e7-4464-9a43-000b168bb354)
 
-InstrumentSpec is closed for modification; the `matches()` method is defined in the base class and doesn’t change.
+`InstrumentSpec` is closed for modification, The `matches()` method is defined in the base class and doesn’t change.
 
 But it’s open for extension, because all of the subclasses can change the behavior of `matches()`
 
-You can achieve this concept not only by extending another class, but if you have several private methods in a class, but those are also closed for modification—no other code can mess with them. But then you could add several public methods that invoked those private methods in different ways. this is considered an OCP.
+You can achieve this concept not only by extending another class, but if you have several private methods in a class, but those are also closed for modification no code can mess with them. But then you could add several public methods that invoked those private methods in different ways. this is considered an OCP.
 
 OCP is a combination of encapsulation and abstraction.
 
@@ -566,7 +549,8 @@ Cohesion is actually just another name for the SRP. If you’re writing highly c
 | :---------------------------------: | :-----------------------------------------------------: |
 | Put functions and data in one place | Make sure that your class does one thing and do it well |
 
-the following image is a test to determine if your class applies or violates the SRP principle.
+The following image is a test to determine if your class applies or violates the SRP principle.
+
 ![image-2](https://github.com/0xGhazy/0xGhazy/assets/60070427/c3615624-c0f7-4921-bd88-f6306dacc5e7)
 
 ## The Liskov Substitution Principle (LSP)
@@ -579,13 +563,13 @@ Violating the LSP makes for confusing code, It’s hard to understand code that 
 
 Here are some inheritance alternatives.
 
-## Delegate
+### Delegate
 
-Is when you hand over the responsibility for a particular task to another class or method.
+when you hand over the responsibility for a particular task to another class or method.
 
 Use delegation when you want to use another class’s functionality, as is, without changing that behavior at all.
 
-## Composition
+### Composition
 
 Composition allows you to use behavior from a family of other classes, and to change that behavior at runtime.
 
@@ -595,7 +579,7 @@ In composition, the object composed of other behaviors owns those behaviors. Whe
 
 The behaviors in composition do not exist outside of the composition itself.
 
-## Aggregation
+### Aggregation
 
 Aggregation is when one class is used as part of another class, but still exists outside of that other class.
 
@@ -603,7 +587,7 @@ Aggregation is when one class is used as part of another class, but still exists
 
 If you favor delegation, composition, and aggregation over inheritance, your software will usually be more flexible, and easier to maintain, extend, and reuse.
 
-The last thing in this chapter The LSP is not about sub classing, though; it’s about when to subclass.
+The last thing in this chapter The LSP is not about sub classing, though, It’s about when to subclass.
 
 ---
 
@@ -626,12 +610,12 @@ In the Use of case-driven development, we focus on one scenario at a time, start
 
 Both of them are suitable for developing applications. So when to use `FDD` and `UCCD` -this is not a formal abbreviation I write them for short-?
 
-|                               \*                               | Feature driven development | Use case driven development |
-| :------------------------------------------------------------: | :------------------------: | :-------------------------: |
-|             Show the customer working code faster              |             ✔              |             ❌              |
-|                          User-centric                          |             ❌             |              ✔              |
-|        System has disconnected pieces of functionality.        |             ✔              |             ❌              |
-|                     Transactional systems                      |             ❌             |              ✔              |
+| \*                                                             | Feature driven development | Use case driven development |
+| :------------------------------------------------------------- | :------------------------: | :-------------------------: |
+| Show the customer working code faster                          |             ✔              |             ❌              |
+| User-centric                                                   |             ❌             |              ✔              |
+| System has disconnected pieces of functionality                |             ✔              |             ❌              |
+| Transactional systems                                          |             ❌             |              ✔              |
 | Show the customer bigger pieces of functionality at each stage |             ❌             |              ✔              |
 
 You should test your software for every possible usage you can think of. Be creative!
@@ -648,3 +632,7 @@ Each time you iterate, reevaluate your design decisions and don’t be afraid to
 When you are programming by contract, you’re working with client code to agree on how you’ll handle problem situations.
 
 When you’re programming defensively, you’re making sure the client gets a “safe” response, no matter what the client wants to have happen.
+
+In Chapter 10, The authors recapped what they had mentioned in the past 9 chapters and tried to apply it to one project.
+
+The end ❤
