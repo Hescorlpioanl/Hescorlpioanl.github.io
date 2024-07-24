@@ -226,13 +226,13 @@ public class SimpleTCPServer {
 }
 ```
 
-In the TCP server above we have `start`, and `stop` methods, if i hide the methods implementation you will still get what does this methods do, `start` for starting the TCP server to receive and accept connections requests, and `stop` for closing the server and terminate all open connections.
-
 <img align="right" 
      height="200"
      width="200"
      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKuCFMiw5sQfH7KmjoSlBWnR2qQCUdkH3wVQ&s"
      alt="Prof.-Adel-Shakal"/>
+
+In the TCP server above we have `start`, and `stop` methods, if i hide the methods implementation you will still get what does this methods do, `start` for starting the TCP server to receive and accept connections requests, and `stop` for closing the server and terminate all open connections.
 
 **What about `qatr6ElaTelt` ? What does it do? What does it mean?**
 
