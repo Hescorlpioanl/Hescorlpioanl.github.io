@@ -80,7 +80,7 @@ In the class context, we can use `name`, `phone`, and `address` for a data membe
 
 ### Interfaces and Implementations
 
-Here in the `Java` context, it's preferred to name your interface with its name without any encoding and encode the classes that implement it. For example, we have an interface called `AccountRepository` Here we have no encoding, For the classes that implement this interface we can use the `Impl` post-fix for their names such as `AccountRebosetoryImpl`.
+Here in the `Java` context, it's preferred to name your interface with its name without any encoding and encode the classes that implement it. For example, we have an interface called `AccountRepository` Here we have no encoding, For the classes that implement this interface we can use the `Impl` post-fix for their names such as `AccountRepositoryImpl`.
 
 For the `C#` Guys they may prefer the `I` for the implementation so they will call it `IAccountRepository`. This is good too as long as we follow the community convention.
 
@@ -228,18 +228,15 @@ public class SimpleTCPServer {
 
 In the TCP server above we have `start`, and `stop` methods, if i hide the methods implementation you will still get what does this methods do, `start` for starting the TCP server to receive and accept connections requests, and `stop` for closing the server and terminate all open connections.
 
-<div>
 <img align="right" 
      height="200"
      width="200"
      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKuCFMiw5sQfH7KmjoSlBWnR2qQCUdkH3wVQ&s"
      alt="Prof.-Adel-Shakal"/>
-     <div style="max-width: 1000px;">
-     <br>
-     <b>What about `qatk6ElaTelt` ? What does it do? What does it mean?</b><br> For me I know what does it mean by reading the name only without even see the implementation.
-    <br> Because i know the `meme`, `Joke`, or the `reference` behind it. <br> Not all people know **Prof. Adel Shakal**, So it will so hard for them to expect what does this method do without reading the implementation.</p>
-    <br>
-</div>
+
+**What about `qatr6ElaTelt` ? What does it do? What does it mean?**
+
+For me I know what does it mean by reading the name only without even see the implementation. Because i know the `meme`, `Joke`, or the `reference` behind it. Not all people know **Prof. Adel Shakal**, So it will so hard for them to expect what does this method do without reading the implementation.
 
 ## Pick One Word per Concept
 
