@@ -1,11 +1,11 @@
 ---
-title: "Posts by Tag"
+title: "About Hossam"
 permalink: /about/
 layout: about
 author_profile: true
 ---
 
-# 0xghazy@github~$ ![whoami typing svg](https://readme-typing-svg.demolab.com?font=Fira+Code&size=25&duration=6000&pause=1000&color=2FC02F&random=false&width=435&height=25&vCenter=true&lines=whoami)
+0xghazy@github~$ ![whoami typing svg](https://readme-typing-svg.demolab.com?font=Fira+Code&size=25&duration=6000&pause=1000&color=2FC02F&random=false&width=435&height=25&vCenter=true&lines=whoami)
 
 Hi, I'm Hossam Hamdy, a T-Shaped software engineer with a passion for solving complex problems and building efficient, scalable solutions. Over the years, I’ve honed my skills across diverse technologies and domains such as **Value-Added Services (VAS)** for leading telecom service providers in Egypt and Africa , Integration, Automation, ERP solutions such as Zoho products.
 
@@ -52,6 +52,6 @@ Technologies I work with:
 - [Git And GitHub kickstart](https://0xghazy.github.io/blog/Git-and-GitHub-kickstart/)
 <!-- BLOG-POST-LIST:END -->
 
-## 🎥 Latest YouTube Videos
+🎥 Latest YouTube Videos
 
 <!-- YOUTUBE:START --><li><a href="https://www.youtube.com/watch?v=g_HfTeTvPyc" target="_blank">02 - REST API Design in Arabic | A Brief History of W3</a></li><li><a href="https://www.youtube.com/watch?v=GbRbm8wJqk8" target="_blank">01 - REST API Design in Arabic | Motivation</a></li><li><a href="https://www.youtube.com/watch?v=hpg49tz7vC4" target="_blank">Chapter 05 | Starting out with Python 5th edition | Arabic</a></li><li><a href="https://www.youtube.com/watch?v=FoAkl1vKIdo" target="_blank">Lecture 06 | Computer Security | BFCAI</a></li><li><a href="https://www.youtube.com/watch?v=TmfNmRB1Rds" target="_blank">Lecture 05 | Computer Security | BFCAI</a></li><li><a href="https://www.youtube.com/watch?v=gBORfmi2HQI" target="_blank">Lecture 04 | Computer Security | BFCAI</a></li><li><a href="https://www.youtube.com/watch?v=dYYAwC_Uzqk" target="_blank">Lecture 07 | Computer Security | BFCAI</a></li><li><a href="https://www.youtube.com/watch?v=Lys5j-rMkds" target="_blank">Chapter 04 | Starting out with Python 5th edition | Arabic</a></li><li><a href="https://www.youtube.com/watch?v=Q3h4BB9hSPE" target="_blank">Lecture 03 | Computer Security | BFCAI</a></li><li><a href="https://www.youtube.com/watch?v=mFt_w19YaeA" target="_blank">Lecture 02 | Computer Security | BFCAI</a></li><!-- YOUTUBE:END -->
