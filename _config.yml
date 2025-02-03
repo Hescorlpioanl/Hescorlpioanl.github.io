@@ -30,11 +30,11 @@ masthead_title: # overrides the website title displayed in the masthead, use " "
 breadcrumbs: true #, false (default)
 words_per_minute: 170
 comments:
-  provider: # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
+  provider: disqus # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
   disqus:
-    shortname: # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname: disqus_UhgwkQWG2u
   discourse:
-    server: meta.discourse.org #https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.:
+    server: #https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
     # https://developers.facebook.com/docs/plugins/comments
     appid:
