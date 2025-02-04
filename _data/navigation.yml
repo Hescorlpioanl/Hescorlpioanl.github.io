@@ -1,13 +1,7 @@
 main:
   - title: "Hossam.log"
-    url: /categories/#hossam.log
-  - title: "Posts"
-    url: /categories/#posts
+    url: /categories/#hossam-log
   - title: "Blog"
     url: /categories/#blog
-  - title: "Summaries"
-    url: /categories/#summaries
   - title: "Security"
     url: /categories/#security
-  - title: "Projects"
-    url: /categories/#projects
