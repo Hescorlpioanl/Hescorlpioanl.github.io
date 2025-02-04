@@ -20,7 +20,9 @@
   })(document, "script", "facebook-jssdk");
 
   const elements = document.querySelectorAll("._5mdd");
-
-  // Logging the found elements
-  console.log("elements: " + elements);
+  elements.forEach((el) => {
+    console.log("elements: " + elements);
+    el.style.color = "white";
+    console.log("elements: " + elements);
+  });
 </script>
