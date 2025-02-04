@@ -409,7 +409,7 @@ body {
   float: left;
   margin-left: 0;
   margin-right: 0;
-  color: #fff;
+  color: white;
   width: 100%;
   clear: both;
 }
@@ -418,6 +418,7 @@ body {
   margin-top: 2rem;
   margin-bottom: 10px;
   padding-top: 2rem;
+  color: white;
   font-size: $type-size-6;
   border-top: 1px solid $border-color;
   text-transform: uppercase;
@@ -477,7 +478,7 @@ body {
 .comment__content-wrapper {
   float: right;
   width: calc(100% - 60px);
-  color: #fff;
+  color: white;
 
   @include breakpoint($large) {
     width: calc(100% - 100px);
