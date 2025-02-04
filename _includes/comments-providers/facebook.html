@@ -1,10 +1,4 @@
-<div id="fb-root" style="color: white"></div>
-<!-- <script
-  async
-  defer
-  crossorigin="anonymous"
-  src="https://connect.facebook.net/en_EN/sdk.js#xfbml=1&version=v22.0"
-></script> -->
+<div id="fb-root"></div>
 
 <script>
   (function (d, s, id) {
@@ -18,7 +12,4 @@
       "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5{% if site.comments.facebook.appid %}&appId={{ site.comments.facebook.appid }}{% endif %}";
     fjs.parentNode.insertBefore(js, fjs);
   })(document, "script", "facebook-jssdk");
-
-  const body = document.querySelector("body");
-  body.style.color = "white";
 </script>
