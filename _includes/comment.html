@@ -4,6 +4,7 @@
   itemprop="comment"
   itemscope
   itemtype="https://schema.org/Comment"
+  style="color: white !important"
 >
   <div class="comment__avatar-wrapper">
     <img
@@ -21,7 +22,11 @@
     >
       {% unless include.url == blank %}
       <span itemprop="name"
-        ><a rel="external nofollow" itemprop="url" href="{{ include.url }}"
+        ><a
+          rel="external nofollow"
+          itemprop="url"
+          href="{{ include.url }}"
+          style="color: white !important"
           >{{ include.name }}</a
         ></span
       >
@@ -33,15 +38,19 @@
       {% if include.date %} {% if include.index %}<a
         href="#comment{{ include.index }}"
         itemprop="url"
+        style="color: white !important"
         >{% endif %}
         <time
           datetime="{{ include.date | date_to_xmlschema }}"
           itemprop="datePublished"
+          style="color: white !important"
           >{{ include.date | date: "%B %-d, %Y at %I:%M %p" }}</time
         >
         {% if include.index %}</a
       >{% endif %} {% endif %}
     </p>
-    <div itemprop="text">{{ include.message | markdownify }}</div>
+    <div itemprop="text" style="color: white !important">
+      {{ include.message | markdownify }}
+    </div>
   </div>
 </article>
