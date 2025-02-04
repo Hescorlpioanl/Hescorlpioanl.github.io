@@ -12,13 +12,13 @@
 
 # theme: "minimal-mistakes-jekyll"
 # remote_theme: "mmistakes/minimal-mistakes"
-minimal_mistakes_skin: "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin: "contrast" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale: "en-US"
-title: "Hossam Hamdy (0xGhazy) Blog"
+title: "Hossam Hamdy Blog"
 title_separator: "-"
-# subtitle: " | Free Palestine ✌"
+subtitle: " | Free Palestine ✌"
 name: "Hossam Hamdy Blog"
 description: "Blogs, learning journey notes and other things"
 url: # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -31,15 +31,15 @@ breadcrumbs: true #, false (default)
 words_per_minute: 250
 comments:
   provider: facebook # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
-  # disqus:
-  #   shortname:
-  # discourse:
-  #   server: #https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
+  disqus:
+    shortname:
+  discourse:
+    server: #https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
     # https://developers.facebook.com/docs/plugins/comments
-    # appid:
+    appid:
     num_posts: 100 # 5 (default)
-    colorscheme: "light" # "light" (default), "dark"
+    colorscheme: # "light" (default), "dark"
   utterances:
     theme: # "github-light" (default), "github-dark"
     issue_term: # "pathname" (default)
@@ -259,4 +259,4 @@ defaults:
       author_profile: true
       read_time: true
       share: true
-      related: true
+      # related: true
