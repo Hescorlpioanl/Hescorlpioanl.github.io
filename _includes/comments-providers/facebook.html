@@ -1,4 +1,4 @@
-<div id="fb-root" class="fb-comments" data-theme="dark"></div>
+<div id="fb-root"></div>
 <script>
   (function (d, s, id) {
     var js,
@@ -6,6 +6,7 @@
     if (d.getElementById(id)) return;
     js = d.createElement(s);
     js.id = id;
+    console.log(id); // _5mdd
     js.src =
       "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5{% if site.comments.facebook.appid %}&appId={{ site.comments.facebook.appid }}{% endif %}";
     fjs.parentNode.insertBefore(js, fjs);
