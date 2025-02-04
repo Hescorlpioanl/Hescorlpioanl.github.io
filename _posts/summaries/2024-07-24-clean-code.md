@@ -319,5 +319,3 @@ For example, if we have a project called **`Gas Station Deluxe`**, it is a bad i
 _Shorter names are generally better that longer ones, as long as they are clear._
 
 ---
-
-<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="" data-numposts="10"></div>
