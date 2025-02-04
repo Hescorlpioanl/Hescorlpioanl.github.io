@@ -3,6 +3,7 @@ title: "Head First Object-Oriented Analysis & Design Summary"
 classes: wide
 header:
   teaser: /assets/images/summaries/head_first_object_oriented_analysis_and_design.jpg
+  overlay_image: /assets/images/summaries/head_first_object_oriented_analysis_and_design.jpg
 ribbon: ForestGreen
 description: "Head First Object-Oriented Analysis & Design book summary"
 categories:
