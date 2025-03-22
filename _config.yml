@@ -119,16 +119,16 @@ footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/0xGhazy"
+      url: "x"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/h0ssamhamdy/"
+      url: "x"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/0xGhazy"
+      url: "x"
     - label: "Youtube"
       icon: "fab fa-fw fa-youtube"
-      url: "https://www.youtube.com/@0xGhazy"
+      url: "x"
 
 # Reading Files
 include:
