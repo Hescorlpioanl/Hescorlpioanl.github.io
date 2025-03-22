@@ -26,3 +26,9 @@ $navicon-link-color-hover: mix(#000, $background-color, 30%) !default;
 .ais-search-box .ais-search-box--input {
   background-color: $form-background-color;
 }
+
+.comment__content-wrapper {
+  background-color: rgba(255, 255, 255, 0.733);
+  padding: 10px;
+  border-radius: 5px;
+}

@@ -27,7 +27,7 @@ body {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 
 .initial-content,
@@ -88,22 +88,27 @@ body {
     border-bottom: 1px solid $border-color;
   }
 
-	h1, h2, h3, h4, h5, h6 {
-		.header-link {
-			position: relative;
-			left: 0.5em;
-			opacity: 0;
-			font-size: 0.8em;
-			-webkit-transition: opacity 0.2s ease-in-out 0.1s;
-			-moz-transition: opacity 0.2s ease-in-out 0.1s;
-			-o-transition: opacity 0.2s ease-in-out 0.1s;
-			transition: opacity 0.2s ease-in-out 0.1s;
-		}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    .header-link {
+      position: relative;
+      left: 0.5em;
+      opacity: 0;
+      font-size: 0.8em;
+      -webkit-transition: opacity 0.2s ease-in-out 0.1s;
+      -moz-transition: opacity 0.2s ease-in-out 0.1s;
+      -o-transition: opacity 0.2s ease-in-out 0.1s;
+      transition: opacity 0.2s ease-in-out 0.1s;
+    }
 
-		&:hover .header-link {
-			opacity: 1;
-		}
-	}
+    &:hover .header-link {
+      opacity: 1;
+    }
+  }
 
   p,
   li,
@@ -404,6 +409,7 @@ body {
   float: left;
   margin-left: 0;
   margin-right: 0;
+  color: white;
   width: 100%;
   clear: both;
 }
@@ -412,6 +418,7 @@ body {
   margin-top: 2rem;
   margin-bottom: 10px;
   padding-top: 2rem;
+  color: white;
   font-size: $type-size-6;
   border-top: 1px solid $border-color;
   text-transform: uppercase;
@@ -471,6 +478,7 @@ body {
 .comment__content-wrapper {
   float: right;
   width: calc(100% - 60px);
+  color: white;
 
   @include breakpoint($large) {
     width: calc(100% - 100px);
