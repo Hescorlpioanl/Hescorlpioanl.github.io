@@ -16,11 +16,11 @@ minimal_mistakes_skin: "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon
 
 # Site Settings
 locale: "en-US"
-title: "Hossam Hamdy Blog"
+title: "HeleScorpional"
 title_separator: "-"
-subtitle: " | Free Palestine ✌"
-name: "Hossam Hamdy Blog"
-description: "Blogs, learning journey notes and other things"
+subtitle: " | Free Palestine"
+name: "HeleScorpional"
+description: "tricks and writeups"
 url: # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl: # the subpath of your site, e.g. "/blog"
 repository: # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -72,7 +72,7 @@ naver_site_verification:
 twitter:
   username:
 facebook:
-  username: 0xGhazy
+  username: Ahmed
   app_id:
   publisher:
 og_image: # Open Graph/Twitter default site image
@@ -92,7 +92,7 @@ analytics:
 
 # Site Author
 author:
-  name: "Hossam Hamdy"
+  name: "HeleScorpional"
   avatar: /assets/images/site_data/avatar.png # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio: "Software Engineer"
   location: "/dev/null"
@@ -100,19 +100,19 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:hhamdypro@gmail.com"
+      url: "ahmedmohamedelmo5tar@gmail.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/0xGhazy"
+      url: "X"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/h0ssamhamdy/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/0xGhazy"
+      url: "https://github.com/Helescorpional"
     - label: "Youtube"
       icon: "fab fa-fw fa-youtube"
-      url: "https://www.youtube.com/@0xGhazy"
+      url: "x"
 
 # Site Footer
 footer:
